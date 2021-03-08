@@ -49,8 +49,8 @@ namespace AnimalShelter.WebAPI
 
             // Uncomment the following lines to enable logging in with third party login providers
             //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+            //   clientId: "",
+            //   clientSecret: "");
 
             //app.UseTwitterAuthentication(
             //    consumerKey: "",

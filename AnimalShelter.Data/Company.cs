@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AnimalShelter.Data
 {
-    class Company
+    public class Company
     {
     }
 }
