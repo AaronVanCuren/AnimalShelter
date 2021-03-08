@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace AnimalShelter.Models
 {
-    public class Class1
+    public class PostList
     {
+        public int PostId { get; set; }
     }
 }

@@ -27,6 +27,8 @@ namespace AnimalShelter.Data
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+        
+        public DbSet<Post> Posts { get; set; }
 
         public static ApplicationDbContext Create()
         {

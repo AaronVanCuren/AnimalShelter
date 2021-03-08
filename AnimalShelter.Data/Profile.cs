@@ -7,13 +7,10 @@ using System.Threading.Tasks;
 
 namespace AnimalShelter.Data
 {
-    public class Profile : ApplicationUser
+    public class Profile
     {
-        [Key]
         [Required]
-        public int UserId { get; set; }
-        [Required]
-        public Guid ProfileId { get; set; }
+        public Guid ProfileName { get; set; }
         [Required]
         public string FirstName { get; set; }
         [Required]

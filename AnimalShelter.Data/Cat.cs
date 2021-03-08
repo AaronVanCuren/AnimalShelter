@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AnimalShelter.Data
 {
-    public class Cat :Animal
+    public class Cat : Animal
     {
         [Required]
         public bool IsDeclawed { get; set; }
