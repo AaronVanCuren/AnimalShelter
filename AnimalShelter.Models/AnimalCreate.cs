@@ -1,19 +1,15 @@
-﻿using System;
+﻿using AnimalShelter.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AnimalShelter.Data
+namespace AnimalShelter.Models
 {
-    public enum SpeciesType { Cat, Dog, Bunny}
-    public class Animal
+    public class AnimalCreate
     {
-        [Key]
-        [Required]
-        public int AnimalId { get; set; }
         public string Name { get; set; }
         [Required]
         public SpeciesType Species { get; set; }
@@ -28,9 +24,17 @@ namespace AnimalShelter.Data
         public string Description { get; set; }
         [Required]
         public decimal AdoptionPrice { get; set; }
-        [ForeignKey(nameof(Company))]
-        [Required]
-        public Guid User { get; set; }
-        public virtual Company Company { get; set; }
+    }
+    public class DogCreate : AnimalCreate
+    {
+        public bool IsHouseTrained { get; set; }
+    }
+    public class CatCreate : AnimalCreate
+    {
+        public bool IsDeclawed { get; set; }
+    }
+    public class BunnyCreate : AnimalCreate
+    {
+        public bool IsEdible { get; set; }
     }
 }

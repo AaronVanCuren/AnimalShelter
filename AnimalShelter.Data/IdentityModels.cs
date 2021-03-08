@@ -32,7 +32,7 @@ namespace AnimalShelter.Data
         {
             return new ApplicationDbContext();
         }
-
+        public DbSet<Animal> Animals { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder
