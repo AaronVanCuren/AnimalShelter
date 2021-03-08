@@ -21,5 +21,6 @@ namespace AnimalShelter.Data
         [Required]
         public string Address { get; set; }
         public virtual List<Post> Posts { get; set; }
+
     }
 }

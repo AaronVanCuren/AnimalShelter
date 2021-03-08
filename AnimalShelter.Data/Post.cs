@@ -12,13 +12,13 @@ namespace AnimalShelter.Data
     {
         [Key]
         public int PostId { get; set; }
-        [Required]
+
+        [ForeignKey(nameof(Animal))]
         public int AnimalId { get; set; }
-        [ForeignKey(nameof(AnimalId))]
         public virtual Animal Animal { get; set; }
-        [Required]
+
+        [ForeignKey(nameof(Company))]
         public int CompanyId { get; set; }
-        [ForeignKey(nameof(CompanyId))]
         public virtual Company Company { get; set; }
     }
 }

@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AnimalShelter.Services
+namespace AnimalShelter.Models
 {
-    public class Class1
+    public class PostEdit
     {
+        public int PostId { get; set; }
     }
 }
