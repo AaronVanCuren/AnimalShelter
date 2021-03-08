@@ -85,7 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adopt.cs" />
-    <Compile Include="AnimalPost.cs" />
+    <Compile Include="Post.cs" />
     <Compile Include="Animal.cs" />
     <Compile Include="Bunny.cs" />
     <Compile Include="Cat.cs" />
