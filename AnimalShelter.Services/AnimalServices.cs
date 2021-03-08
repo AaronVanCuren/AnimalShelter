@@ -16,8 +16,28 @@ namespace AnimalShelter.Services
         {
             _userId = userId;
         }
-
-        public bool CreateAnimal(DogCreate dog)
+        public bool CreateAnimal(AnimalCreate animal)
+        {
+            
+            int species = (int) animal.Species;
+            switch (species)
+            {
+                case 0:
+                    var dog = new DogCreate();
+                    CreateDog(dog);
+                    break;
+                case 1:
+                    var cat = new CatCreate();
+                    CreateCat(cat);
+                    break;
+                case 2:
+                    var bunny = new BunnyCreate();
+                    CreateBunny(bunny);
+                    break;
+            }
+            return default;
+        }
+        public bool CreateDog(DogCreate dog)
         {
             var entity = new Dog()
             {
@@ -39,7 +59,7 @@ namespace AnimalShelter.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public bool CreateAnimal(CatCreate cat)
+        public bool CreateCat(CatCreate cat)
         {
             var entity = new Cat()
             {
@@ -61,7 +81,7 @@ namespace AnimalShelter.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public bool CreateAnimal(BunnyCreate bunny)
+        public bool CreateBunny(BunnyCreate bunny)
         {
             var entity = new Bunny()
             {
@@ -117,6 +137,17 @@ namespace AnimalShelter.Services
                 return entity.ToArray();
             }
         }
-        
+        public bool DeleteAnimal(int animalId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Animals
+                        .Single(e => e.AnimalId == animalId && e.User == _userId);
+
+                ctx.Animals.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }

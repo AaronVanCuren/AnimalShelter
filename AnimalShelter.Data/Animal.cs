@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AnimalShelter.Data
 {
-    public enum SpeciesType { Cat, Dog, Bunny}
+    public enum SpeciesType { Dog, Cat, Bunny}
     public class Animal
     {
         [Key]
