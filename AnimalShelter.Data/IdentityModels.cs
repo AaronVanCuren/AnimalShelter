@@ -16,7 +16,7 @@ namespace AnimalShelter.Data
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, authenticationType);
-            // Add custom user claims here
+            // Add custom user claims here            
             return userIdentity;
         }
     }
@@ -34,6 +34,9 @@ namespace AnimalShelter.Data
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Profile> Profiles { get; set; }
+        public DbSet<Company> Companies { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
