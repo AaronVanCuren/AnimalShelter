@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AnimalShelter.Data
+namespace AnimalShelter.Models
 {
-    public class Company
+    public class CompanyRUD
     {
         [Required]
-        public Guid User { get; set; }
-        [Key]
         public int CompanyId { get; set; }
         [Required]
         public string Name { get; set; }
@@ -20,6 +17,5 @@ namespace AnimalShelter.Data
         public string PhoneNumber { get; set; }
         [Required]
         public string Address { get; set; }
-        public virtual List<Post> Posts { get; set; }
     }
 }
