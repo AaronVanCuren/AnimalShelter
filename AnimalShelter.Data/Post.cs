@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace AnimalShelter.Data
 {
-    public class Company : Profile
+    public class Post
     {
         [Key]
+        public int PostId { get; set; }
+        [Required]
+        public int AnimalId { get; set; }
         [Required]
         public int CompanyId { get; set; }
-        [Required]
-        public string Name { get; set; }
-        public virtual List<Post> Posts { get; set; }
     }
 }
