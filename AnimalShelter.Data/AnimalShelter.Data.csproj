@@ -93,6 +93,7 @@
     <Compile Include="Dog.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
