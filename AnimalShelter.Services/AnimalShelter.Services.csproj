@@ -84,6 +84,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnimalServices.cs" />
     <Compile Include="PostServices.cs" />
     <Compile Include="CompanyService.cs" />
     <Compile Include="ProfileService.cs" />

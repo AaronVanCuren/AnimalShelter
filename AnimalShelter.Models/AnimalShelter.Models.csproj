@@ -102,7 +102,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-
+    <Compile Include="AnimalCreate.cs" />
+    <Compile Include="AnimalRUD.cs" />
     <Compile Include="PostCreate.cs" />
     <Compile Include="PostDetail.cs" />
     <Compile Include="PostEdit.cs" />
@@ -111,7 +112,6 @@
     <Compile Include="CompanyRUD.cs" />
     <Compile Include="ProfileCreate.cs" />
     <Compile Include="ProfileRUD.cs" />
-
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
