@@ -5,13 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AnimalShelter.Data
+namespace AnimalShelter.Models
 {
-    public class Profile
+    public class ProfileRUD
     {
         [Required]
-        public Guid User { get; set; }
-        [Key]
         public int UserId { get; set; }
         [Required]
         public string FirstName { get; set; }
