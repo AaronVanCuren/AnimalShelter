@@ -85,11 +85,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="CompanyService.cs" />
+    <Compile Include="ProfileService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AnimalShelter.Data\AnimalShelter.Data.csproj">
+      <Project>{4350976d-1689-4f3a-9184-51a2c64b59df}</Project>
+      <Name>AnimalShelter.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AnimalShelter.Models\AnimalShelter.Models.csproj">
+      <Project>{3d269c2a-caaf-4a54-a880-3ef4efd08a0e}</Project>
+      <Name>AnimalShelter.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
