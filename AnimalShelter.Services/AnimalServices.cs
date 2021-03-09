@@ -129,7 +129,7 @@ namespace AnimalShelter.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = ctx.Animals
-                    .Where(e => e.Company.CompanyId == id && e.CompanyUser == _userId)
+                    .Where(e => e.CompanyId == id && e.CompanyUser == _userId)
                     .Select(
                     e =>
                     new AnimalRUD
@@ -147,7 +147,7 @@ namespace AnimalShelter.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = ctx.Animals
-                        .Single(e => e.AnimalId == animalId && e.CompanyUser == _userId);
+                        .Single(e => e.CompanyId == animalId && e.CompanyUser == _userId);
 
                 ctx.Animals.Remove(entity);
 

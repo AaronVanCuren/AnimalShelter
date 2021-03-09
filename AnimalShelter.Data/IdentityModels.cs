@@ -27,14 +27,13 @@ namespace AnimalShelter.Data
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-        
-        public DbSet<Post> Posts { get; set; }
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
 
+        public DbSet<Post> Posts { get; set; }
         public DbSet<Animal> Animals { get; set; }
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<Company> Companies { get; set; }

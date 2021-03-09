@@ -9,6 +9,5 @@ namespace AnimalShelter.Models
     public class PostDetail
     {
         public int PostId { get; set; }
-        //public int CompanyId { get; set; }
     }
 }
