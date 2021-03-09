@@ -29,8 +29,7 @@ namespace AnimalShelter.Data
         [Required]
         public decimal AdoptionPrice { get; set; }
         [ForeignKey(nameof(Company))]
-        [Required]
-        public Guid User { get; set; }
+        public Guid CompanyUser { get; set; }
         public virtual Company Company { get; set; }
     }
 }
