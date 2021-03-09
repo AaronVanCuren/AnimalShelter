@@ -18,8 +18,13 @@ namespace AnimalShelter.Services
         }
         public bool CreateAnimal(AnimalCreate animal)
         {
-            
-            int species = (int) animal.Species;
+            var entity = new Animal()
+            {
+                Species = animal.Species,
+            };
+
+
+            int species = (int)animal.Species;
             switch (species)
             {
                 case 0:
@@ -108,7 +113,7 @@ namespace AnimalShelter.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var query = ctx.Animals
-                        .Where(e => e.User == _userId)
+                        .Where(e => e.CompanyUser == _userId)
                         .Select(
                             e => new AnimalRUD
                             {
@@ -124,7 +129,7 @@ namespace AnimalShelter.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = ctx.Animals
-                    .Where(e => e.Company.CompanyId == id && e.User == _userId)
+                    .Where(e => e.Company.CompanyId == id && e.CompanyUser == _userId)
                     .Select(
                     e =>
                     new AnimalRUD
@@ -142,7 +147,7 @@ namespace AnimalShelter.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = ctx.Animals
-                        .Single(e => e.AnimalId == animalId && e.User == _userId);
+                        .Single(e => e.AnimalId == animalId && e.CompanyUser == _userId);
 
                 ctx.Animals.Remove(entity);
 
