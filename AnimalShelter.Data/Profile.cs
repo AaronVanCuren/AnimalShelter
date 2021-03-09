@@ -10,9 +10,9 @@ namespace AnimalShelter.Data
     public class Profile
     {
         [Required]
-        public Guid User { get; set; }
+        public Guid UserId { get; set; }
         [Key]
-        public int UserId { get; set; }
+        public int ProfileId { get; set; }
         [Required]
         public string FirstName { get; set; }
         [Required]
