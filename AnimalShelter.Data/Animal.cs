@@ -11,7 +11,6 @@ namespace AnimalShelter.Data
     public enum SpeciesType { Dog, Cat, Bunny}
     public class Animal
     {
-        public Guid CompanyUser { get; set; }
         [Key]
         public int AnimalId { get; set; }
         public string Name { get; set; }
@@ -28,9 +27,5 @@ namespace AnimalShelter.Data
         public string Description { get; set; }
         [Required]
         public decimal AdoptionPrice { get; set; }
-        [Required]
-        public int CompanyId { get; set; }
-        [ForeignKey(nameof(CompanyId))]
-        public virtual Company Company { get; set; }
     }
 }

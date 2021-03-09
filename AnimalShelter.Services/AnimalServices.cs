@@ -113,7 +113,6 @@ namespace AnimalShelter.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var query = ctx.Animals
-                        .Where(e => e.CompanyUser == _userId)
                         .Select(
                             e => new AnimalRUD
                             {
@@ -124,30 +123,12 @@ namespace AnimalShelter.Services
                 return query.ToArray();
             }
         }
-        public IEnumerable<AnimalRUD> GetAnimalsByCompanyId(int id)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var entity = ctx.Animals
-                    .Where(e => e.CompanyId == id && e.CompanyUser == _userId)
-                    .Select(
-                    e =>
-                    new AnimalRUD
-                    {
-                        AnimalId = e.AnimalId,
-                        Species = e.Species
-                    }
-                    );
-
-                return entity.ToArray();
-            }
-        }
         public bool DeleteAnimal(int animalId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = ctx.Animals
-                        .Single(e => e.CompanyId == animalId && e.CompanyUser == _userId);
+                        .Single(e => e.AnimalId == animalId);
 
                 ctx.Animals.Remove(entity);
 
