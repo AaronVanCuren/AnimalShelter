@@ -11,7 +11,7 @@ namespace AnimalShelter.Data
     public class Company
     {
         [Required]
-        public Guid CompanyUser { get; set; }
+        public Guid UserId { get; set; }
         [Key]
         public int CompanyId { get; set; }
         [Required]
