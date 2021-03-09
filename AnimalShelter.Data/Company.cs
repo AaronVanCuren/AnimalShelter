@@ -11,7 +11,7 @@ namespace AnimalShelter.Data
     public class Company
     {
         [Required]
-        public Guid User { get; set; }
+        public Guid CompanyUser { get; set; }
         [Key]
         public int CompanyId { get; set; }
         [Required]
@@ -20,7 +20,7 @@ namespace AnimalShelter.Data
         public string PhoneNumber { get; set; }
         [Required]
         public string Address { get; set; }
+        public virtual List<Animal> Animals { get; set; }
         public virtual List<Post> Posts { get; set; }
-
     }
 }

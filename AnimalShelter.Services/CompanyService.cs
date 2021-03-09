@@ -21,7 +21,7 @@ namespace AnimalShelter.Services
         {
             var entity = new Company()
             {
-                User = _userId,
+                CompanyUser = _userId,
                 Name = model.Name,
                 PhoneNumber = model.PhoneNumber,
                 Address = model.Address
@@ -39,7 +39,7 @@ namespace AnimalShelter.Services
             using (var db = new ApplicationDbContext())
             {
                 var query = db.Companies
-                        .Where(e => e.User == _userId)
+                        .Where(e => e.CompanyUser == _userId)
                         .Select(
                             e => new CompanyRUD
                             {
@@ -57,7 +57,7 @@ namespace AnimalShelter.Services
             using (var db = new ApplicationDbContext())
             {
                 var entity = db.Companies
-                        .Single(e => e.CompanyId == id && e.User == _userId);
+                        .Single(e => e.CompanyId == id && e.CompanyUser == _userId);
                 return
                     new CompanyRUD
                     {
@@ -74,7 +74,7 @@ namespace AnimalShelter.Services
             using (var db = new ApplicationDbContext())
             {
                 var entity = db.Companies
-                        .Single(e => e.CompanyId == model.CompanyId && e.User == _userId);
+                        .Single(e => e.CompanyId == model.CompanyId && e.CompanyUser == _userId);
 
                 entity.Name = model.Name;
                 entity.PhoneNumber = model.PhoneNumber;
@@ -89,7 +89,7 @@ namespace AnimalShelter.Services
             using (var db = new ApplicationDbContext())
             {
                 var entity = db.Companies
-                        .Single(e => e.CompanyId == companyId && e.User == _userId);
+                        .Single(e => e.CompanyId == companyId && e.CompanyUser == _userId);
 
                 db.Companies.Remove(entity);
 
