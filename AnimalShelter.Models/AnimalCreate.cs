@@ -24,17 +24,8 @@ namespace AnimalShelter.Models
         public string Description { get; set; }
         [Required]
         public decimal AdoptionPrice { get; set; }
-    }
-    public class DogCreate : AnimalCreate
-    {
-        public bool IsHouseTrained { get; set; }
-    }
-    public class CatCreate : AnimalCreate
-    {
-        public bool IsDeclawed { get; set; }
-    }
-    public class BunnyCreate : AnimalCreate
-    {
-        public bool IsEdible { get; set; }
+        public bool IsHouseTrained { get; set; } = false;
+        public bool IsDeclawed { get; set; } = false;
+        public bool IsEdible { get; set; } = false;
     }
 }

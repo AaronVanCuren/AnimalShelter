@@ -27,5 +27,8 @@ namespace AnimalShelter.Data
         public string Description { get; set; }
         [Required]
         public decimal AdoptionPrice { get; set; }
+        public bool IsHouseTrained { get; set; } 
+        public bool IsDeclawed { get; set; }
+        public bool IsEdible { get; set; }
     }
 }
