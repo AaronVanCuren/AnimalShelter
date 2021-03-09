@@ -21,7 +21,7 @@ namespace AnimalShelter.Services
         {
             var entity = new Company()
             {
-                CompanyUser = _userId,
+                UserId = _userId,
                 Name = model.Name,
                 PhoneNumber = model.PhoneNumber,
                 Address = model.Address
@@ -39,10 +39,11 @@ namespace AnimalShelter.Services
             using (var db = new ApplicationDbContext())
             {
                 var query = db.Companies
-                        .Where(e => e.CompanyUser == _userId)
+                        .Where(e => e.UserId == _userId)
                         .Select(
                             e => new CompanyRUD
                             {
+                                CompanyId = e.CompanyId,
                                 Name = e.Name,
                                 PhoneNumber = e.PhoneNumber,
                                 Address = e.Address
@@ -57,7 +58,7 @@ namespace AnimalShelter.Services
             using (var db = new ApplicationDbContext())
             {
                 var entity = db.Companies
-                        .Single(e => e.CompanyId == id && e.CompanyUser == _userId);
+                        .Single(e => e.CompanyId == id && e.UserId == _userId);
                 return
                     new CompanyRUD
                     {
@@ -74,7 +75,7 @@ namespace AnimalShelter.Services
             using (var db = new ApplicationDbContext())
             {
                 var entity = db.Companies
-                        .Single(e => e.CompanyId == model.CompanyId && e.CompanyUser == _userId);
+                        .Single(e => e.CompanyId == model.CompanyId && e.UserId == _userId);
 
                 entity.Name = model.Name;
                 entity.PhoneNumber = model.PhoneNumber;
@@ -89,7 +90,7 @@ namespace AnimalShelter.Services
             using (var db = new ApplicationDbContext())
             {
                 var entity = db.Companies
-                        .Single(e => e.CompanyId == companyId && e.CompanyUser == _userId);
+                        .Single(e => e.CompanyId == companyId && e.UserId == _userId);
 
                 db.Companies.Remove(entity);
 
