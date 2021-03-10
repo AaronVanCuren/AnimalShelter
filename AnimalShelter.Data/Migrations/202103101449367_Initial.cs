@@ -3,7 +3,7 @@ namespace AnimalShelter.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialMigration : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
@@ -21,10 +21,9 @@ namespace AnimalShelter.Data.Migrations
                         Age = c.String(nullable: false),
                         Description = c.String(),
                         AdoptionPrice = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        IsEdible = c.Boolean(),
-                        IsDeclawed = c.Boolean(),
-                        IsHouseTrained = c.Boolean(),
-                        Discriminator = c.String(nullable: false, maxLength: 128),
+                        IsHouseTrained = c.Boolean(nullable: false),
+                        IsDeclawed = c.Boolean(nullable: false),
+                        IsEdible = c.Boolean(nullable: false),
                         Company_CompanyId = c.Int(),
                     })
                 .PrimaryKey(t => t.AnimalId)
@@ -36,7 +35,7 @@ namespace AnimalShelter.Data.Migrations
                 c => new
                     {
                         CompanyId = c.Int(nullable: false, identity: true),
-                        CompanyUser = c.Guid(nullable: false),
+                        UserId = c.Guid(nullable: false),
                         Name = c.String(nullable: false),
                         PhoneNumber = c.String(nullable: false),
                         Address = c.String(nullable: false),
@@ -61,13 +60,13 @@ namespace AnimalShelter.Data.Migrations
                 "dbo.Profile",
                 c => new
                     {
-                        UserId = c.Int(nullable: false, identity: true),
-                        User = c.Guid(nullable: false),
+                        ProfileId = c.Int(nullable: false, identity: true),
+                        UserId = c.Guid(nullable: false),
                         FirstName = c.String(nullable: false),
                         LastName = c.String(nullable: false),
                         Address = c.String(),
                     })
-                .PrimaryKey(t => t.UserId);
+                .PrimaryKey(t => t.ProfileId);
             
             CreateTable(
                 "dbo.IdentityRole",
