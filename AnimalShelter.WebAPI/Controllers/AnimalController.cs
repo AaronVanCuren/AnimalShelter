@@ -18,12 +18,7 @@ namespace AnimalShelter.WebAPI.Controllers
             var animalService = new AnimalServices(user);
             return animalService;
         }
-        public IHttpActionResult Get()
-        {
-            AnimalServices animalServices = CreateAnimalServices();
-            var animals = animalServices.GetAnimals();
-            return Ok(animals);
-        }
+        
         public IHttpActionResult Post(AnimalCreate animal)
         {
             if (!ModelState.IsValid)
@@ -36,6 +31,21 @@ namespace AnimalShelter.WebAPI.Controllers
 
             return Ok();
         }
+
+        public IHttpActionResult Get()
+        {
+            AnimalServices animalServices = CreateAnimalServices();
+            var animals = animalServices.GetAnimals();
+            return Ok(animals);
+        }
+
+        public IHttpActionResult Get(int id)
+        {
+            AnimalServices animalService = CreateAnimalServices();
+            var animal = animalService.GetAnimalById(id);
+            return Ok(animal);
+        }
+
         public IHttpActionResult Put(AnimalRUD animal)
         {
             if (!ModelState.IsValid)
@@ -48,6 +58,7 @@ namespace AnimalShelter.WebAPI.Controllers
 
             return Ok();
         }
+
         public IHttpActionResult Delete(int id)
         {
             var service = CreateAnimalServices();

@@ -11,12 +11,16 @@ namespace AnimalShelter.Data
     {
         [Required]
         public Guid UserId { get; set; }
+
         [Key]
         public int ProfileId { get; set; }
+
         [Required]
         public string FirstName { get; set; }
+
         [Required]
         public string LastName { get; set; }
+
         public string Address { get; set; }
     }
 }

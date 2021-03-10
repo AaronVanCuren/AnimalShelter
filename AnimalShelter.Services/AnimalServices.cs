@@ -16,6 +16,7 @@ namespace AnimalShelter.Services
         {
             _userId = userId;
         }
+
         public bool CreateAnimal(AnimalCreate animal)
         {
             var entity = new Animal()
@@ -31,64 +32,100 @@ namespace AnimalShelter.Services
                 AdoptionPrice = animal.AdoptionPrice,
                 IsHouseTrained = animal.IsHouseTrained,
                 IsDeclawed = animal.IsDeclawed,
-                IsEdible = animal.IsEdible,
+                IsEdible = animal.IsEdible
             };
-            using (var ctx = new ApplicationDbContext())
+            using (var db = new ApplicationDbContext())
             {
-                ctx.Animals.Add(entity);
-                return ctx.SaveChanges() == 1;
+                db.Animals.Add(entity);
+                return db.SaveChanges() == 1;
             }
-
         }
-       
+
         public IEnumerable<AnimalRUD> GetAnimals()
         {
-            using (var ctx = new ApplicationDbContext())
+            using (var db = new ApplicationDbContext())
             {
-                var query = ctx.Animals
+                var query = db.Animals
                         .Select(
                             e => new AnimalRUD
                             {
                                 AnimalId = e.AnimalId,
+                                Name = e.Name,
                                 Species = e.Species,
+                                Breed = e.Breed,
+                                Sex = e.Sex,
+                                Fixed = e.Fixed,
+                                HasShots = e.HasShots,
+                                Age = e.Age,
+                                Description = e.Description,
+                                AdoptionPrice = e.AdoptionPrice,
+                                IsHouseTrained = e.IsHouseTrained,
+                                IsDeclawed = e.IsDeclawed,
+                                IsEdible = e.IsEdible
                             });
 
                 return query.ToArray();
             }
         }
-        public bool UpdateAnimal(AnimalRUD model)
+
+        public AnimalRUD GetAnimalById(int id)
         {
-            using (var ctx = new ApplicationDbContext())
+            using (var db = new ApplicationDbContext())
             {
-                var entity = ctx.Animals
-                        .Single(e => e.AnimalId == model.AnimalId);
-
-                entity.Name = model.Name;
-                entity.Species = model.Species;
-                entity.Breed = model.Breed;
-                entity.Sex = model.Sex;
-                entity.Fixed = model.Fixed;
-                entity.HasShots = model.HasShots;
-                entity.Age = model.Age;
-                entity.Description = model.Description;
-                entity.AdoptionPrice = model.AdoptionPrice;
-                entity.IsHouseTrained = model.IsHouseTrained;
-                entity.IsDeclawed = model.IsDeclawed;
-                entity.IsEdible = model.IsEdible;
-
-                return ctx.SaveChanges() == 1;
+                var entity = db.Animals
+                        .Single(e => e.AnimalId == id);
+                return new AnimalRUD
+                {
+                    AnimalId = entity.AnimalId,
+                    Name = entity.Name,
+                    Species = entity.Species,
+                    Breed = entity.Breed,
+                    Sex = entity.Sex,
+                    Fixed = entity.Fixed,
+                    HasShots = entity.HasShots,
+                    Age = entity.Age,
+                    Description = entity.Description,
+                    AdoptionPrice = entity.AdoptionPrice,
+                    IsHouseTrained = entity.IsHouseTrained,
+                    IsDeclawed = entity.IsDeclawed,
+                    IsEdible = entity.IsEdible
+                };
             }
         }
+
+        public bool UpdateAnimal(AnimalRUD animal)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                var entity = db.Animals
+                        .Single(e => e.AnimalId == animal.AnimalId);
+                entity.Name = animal.Name;
+                entity.Species = animal.Species;
+                entity.Breed = animal.Breed;
+                entity.Sex = animal.Sex;
+                entity.Fixed = animal.Fixed;
+                entity.HasShots = animal.HasShots;
+                entity.Age = animal.Age;
+                entity.Description = animal.Description;
+                entity.AdoptionPrice = animal.AdoptionPrice;
+                entity.IsHouseTrained = animal.IsHouseTrained;
+                entity.IsDeclawed = animal.IsDeclawed;
+                entity.IsEdible = animal.IsEdible;
+
+                return db.SaveChanges() == 1;
+            }
+        }
+
         public bool DeleteAnimal(int animalId)
         {
-            using (var ctx = new ApplicationDbContext())
+            using (var db = new ApplicationDbContext())
             {
-                var entity = ctx.Animals
+                var entity = db.Animals
                         .Single(e => e.AnimalId == animalId);
 
-                ctx.Animals.Remove(entity);
+                db.Animals.Remove(entity);
 
-                return ctx.SaveChanges() == 1;
+                return db.SaveChanges() == 1;
             }
         }
     }
