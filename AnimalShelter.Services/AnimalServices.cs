@@ -56,6 +56,29 @@ namespace AnimalShelter.Services
                 return query.ToArray();
             }
         }
+        public bool UpdateAnimal(AnimalRUD model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Animals
+                        .Single(e => e.AnimalId == model.AnimalId);
+
+                entity.Name = model.Name;
+                entity.Species = model.Species;
+                entity.Breed = model.Breed;
+                entity.Sex = model.Sex;
+                entity.Fixed = model.Fixed;
+                entity.HasShots = model.HasShots;
+                entity.Age = model.Age;
+                entity.Description = model.Description;
+                entity.AdoptionPrice = model.AdoptionPrice;
+                entity.IsHouseTrained = model.IsHouseTrained;
+                entity.IsDeclawed = model.IsDeclawed;
+                entity.IsEdible = model.IsEdible;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
         public bool DeleteAnimal(int animalId)
         {
             using (var ctx = new ApplicationDbContext())

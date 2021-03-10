@@ -10,49 +10,49 @@ using System.Web.Http;
 
 namespace AnimalShelter.WebAPI.Controllers
 {
-    public class AnimalController : ApiController
+    public class VaccineController : ApiController
     {
-        private AnimalServices CreateAnimalServices()
+        private VaccineServices CreateVaccineServices()
         {
             var user = Guid.Parse(User.Identity.GetUserId());
-            var animalService = new AnimalServices(user);
-            return animalService;
+            var vaccineService = new VaccineServices(user);
+            return vaccineService;
         }
         public IHttpActionResult Get()
         {
-            AnimalServices animalServices = CreateAnimalServices();
-            var animals = animalServices.GetAnimals();
-            return Ok(animals);
+            VaccineServices vaccineServices = CreateVaccineServices();
+            var vaccines = vaccineServices.GetVaccines();
+            return Ok(vaccines);
         }
-        public IHttpActionResult Post(AnimalCreate animal)
+        public IHttpActionResult Post(VaccineCreate vaccine)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var service = CreateAnimalServices();
+            var service = CreateVaccineServices();
 
-            if (!service.CreateAnimal(animal))
+            if (!service.CreateVaccine(vaccine))
                 return InternalServerError();
 
             return Ok();
         }
-        public IHttpActionResult Put(AnimalRUD animal)
+        public IHttpActionResult Put(VaccineRUD vaccine)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var service = CreateAnimalServices();
+            var service = CreateVaccineServices();
 
-            if (!service.UpdateAnimal(animal))
+            if (!service.UpdateVaccine(vaccine))
                 return InternalServerError();
 
             return Ok();
         }
         public IHttpActionResult Delete(int id)
         {
-            var service = CreateAnimalServices();
+            var service = CreateVaccineServices();
 
-            if (!service.DeleteAnimal(id))
+            if (!service.DeleteVaccine(id))
                 return InternalServerError();
 
             return Ok();
