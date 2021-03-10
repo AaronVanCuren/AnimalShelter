@@ -13,7 +13,4 @@ namespace AnimalShelter.Models
         public int AnimalId { get; set; }
         public SpeciesType Species { get; set; }
     }
-    public class DogRUD : AnimalRUD { }
-    public class CatRUD : AnimalRUD { }
-    public class BunnyRUD : AnimalRUD { }
 }
