@@ -84,8 +84,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Adopt.cs" />
     <Compile Include="Comment.cs" />
+    <Compile Include="Adoption.cs" />
     <Compile Include="Post.cs" />
     <Compile Include="Animal.cs" />
     <Compile Include="Company.cs" />
