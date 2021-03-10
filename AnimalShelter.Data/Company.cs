@@ -12,15 +12,21 @@ namespace AnimalShelter.Data
     {
         [Required]
         public Guid UserId { get; set; }
+
         [Key]
         public int CompanyId { get; set; }
+
         [Required]
         public string Name { get; set; }
+
         [Required]
         public string PhoneNumber { get; set; }
+
         [Required]
         public string Address { get; set; }
+
         public virtual List<Animal> Animals { get; set; }
+
         public virtual List<Post> Posts { get; set; }
     }
 }

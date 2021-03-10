@@ -14,7 +14,7 @@ namespace AnimalShelter.WebAPI.Controllers
     {
         private PostServices CreatePostServices()
         {
-            var userId = int.Parse(User.Identity.GetUserId());
+            var userId = Guid.Parse(User.Identity.GetUserId());
             var postService = new PostServices(userId);
             return postService;
         }
