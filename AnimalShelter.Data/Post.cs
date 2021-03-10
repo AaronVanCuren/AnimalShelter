@@ -23,5 +23,6 @@ namespace AnimalShelter.Data
         public int CompanyId { get; set; }
         [ForeignKey(nameof(CompanyId))]
         public virtual Company Company { get; set; }
+        public virtual List<Comment> Comments { get; set; }
     }
 }

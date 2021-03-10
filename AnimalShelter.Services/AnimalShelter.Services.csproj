@@ -85,10 +85,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnimalServices.cs" />
+    <Compile Include="CommentServices.cs" />
     <Compile Include="PostServices.cs" />
     <Compile Include="CompanyService.cs" />
     <Compile Include="ProfileService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReplyServices.cs" />
     <Compile Include="VaccineServices.cs" />
   </ItemGroup>
   <ItemGroup>
