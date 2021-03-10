@@ -99,7 +99,6 @@ namespace AnimalShelter.Services
             {
                 var entity = db.Animals
                         .Single(e => e.AnimalId == animal.AnimalId);
-                entity.AnimalId = animal.AnimalId;
                 entity.Name = animal.Name;
                 entity.Species = animal.Species;
                 entity.Breed = animal.Breed;

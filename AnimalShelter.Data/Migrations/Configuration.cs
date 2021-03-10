@@ -10,6 +10,7 @@ namespace AnimalShelter.Data.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            // May not be needed. This was probably added because of migrations I had to add for my databases. Delete line below if it causes issues.
             ContextKey = "AnimalShelter.Data.ApplicationDbContext";
         }
 

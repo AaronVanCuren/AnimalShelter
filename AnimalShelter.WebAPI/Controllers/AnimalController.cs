@@ -18,14 +18,7 @@ namespace AnimalShelter.WebAPI.Controllers
             var animalService = new AnimalServices(user);
             return animalService;
         }
-
-        public IHttpActionResult Get()
-        {
-            AnimalServices animalServices = CreateAnimalServices();
-            var animals = animalServices.GetAnimals();
-            return Ok(animals);
-        }
-
+        
         public IHttpActionResult Post(AnimalCreate animal)
         {
             if (!ModelState.IsValid)
@@ -37,6 +30,13 @@ namespace AnimalShelter.WebAPI.Controllers
                 return InternalServerError();
 
             return Ok();
+        }
+
+        public IHttpActionResult Get()
+        {
+            AnimalServices animalServices = CreateAnimalServices();
+            var animals = animalServices.GetAnimals();
+            return Ok(animals);
         }
 
         public IHttpActionResult Get(int id)
