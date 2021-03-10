@@ -25,6 +25,10 @@ namespace AnimalShelter.Models
         [MaxLength(200, ErrorMessage = "There are too many charcters in this field. Must have less than 200 characters.")]
         public string Address { get; set; }
 
+        public virtual List<Animal> Animals { get; set; }
+
         public virtual List<Post> Posts { get; set; }
+
+        public virtual List<CompanyRating> Ratings { get; set; }
     }
 }
