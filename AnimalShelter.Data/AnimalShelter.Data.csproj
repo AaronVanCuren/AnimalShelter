@@ -85,15 +85,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adopt.cs" />
-    <Compile Include="Migrations\202103091847070_InitialMigration.cs" />
-    <Compile Include="Migrations\202103091847070_InitialMigration.Designer.cs">
-      <DependentUpon>202103091847070_InitialMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103091959273_AnimalUpdate.cs" />
-    <Compile Include="Migrations\202103091959273_AnimalUpdate.Designer.cs">
-      <DependentUpon>202103091959273_AnimalUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Post.cs" />
     <Compile Include="Animal.cs" />
     <Compile Include="Company.cs" />
@@ -104,14 +95,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202103091847070_InitialMigration.resx">
-      <DependentUpon>202103091847070_InitialMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103091959273_AnimalUpdate.resx">
-      <DependentUpon>202103091959273_AnimalUpdate.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
