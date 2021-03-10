@@ -36,9 +36,12 @@ namespace AnimalShelter.Data
         public DbSet<CompanyRating> Ratings { get; set; }
         public DbSet<Vaccine> Vaccines { get; set; }
         public DbSet<Post> Posts { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Reply> Replies { get; set; }
         public DbSet<Animal> Animals { get; set; }
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<Company> Companies { get; set; }
+        public DbSet<Adoption> Adoptions { get; set; } 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

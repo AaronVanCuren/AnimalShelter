@@ -7,13 +7,13 @@ namespace AnimalShelter.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class Int : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Int));
         
         string IMigrationMetadata.Id
         {
-            get { return "202103092112515_InitialCreate"; }
+            get { return "202103091909293_Int"; }
         }
         
         string IMigrationMetadata.Source
