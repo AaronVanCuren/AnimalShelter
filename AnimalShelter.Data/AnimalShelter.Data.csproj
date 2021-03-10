@@ -84,24 +84,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Adopt.cs" />
-    <Compile Include="Migrations\202103092112515_InitialCreate.cs" />
-    <Compile Include="Migrations\202103092112515_InitialCreate.Designer.cs">
-      <DependentUpon>202103092112515_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103101611400_Initial.cs" />
-    <Compile Include="Migrations\202103101611400_Initial.Designer.cs">
-      <DependentUpon>202103101611400_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103101621309_Post.cs" />
-    <Compile Include="Migrations\202103101621309_Post.Designer.cs">
-      <DependentUpon>202103101621309_Post.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103101630286_Post2.cs" />
-    <Compile Include="Migrations\202103101630286_Post2.Designer.cs">
-      <DependentUpon>202103101630286_Post2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Adoption.cs" />
     <Compile Include="Post.cs" />
     <Compile Include="Animal.cs" />
     <Compile Include="Company.cs" />
