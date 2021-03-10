@@ -59,8 +59,7 @@ namespace AnimalShelter.Services
             {
                 var entity = db.Profiles
                         .Single(e => e.ProfileId == id && e.UserId == _userId);
-                return
-                    new ProfileRUD
+                return new ProfileRUD
                     {
                         ProfileId = entity.ProfileId,
                         FirstName = entity.FirstName,
