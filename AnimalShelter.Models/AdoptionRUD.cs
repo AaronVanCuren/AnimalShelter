@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace AnimalShelter.Models
 {
-    public class Class1
+    public class AdoptionRUD
     {
+        public int AdoptionId { get; set; }
+        public int PostId { get; set; }
+        public int ProfileId { get; set; }
     }
 }

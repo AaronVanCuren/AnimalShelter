@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace AnimalShelter.Services
 {
-    public class Class1
+    public class ReplyRUD
     {
+        public int ReplyId { get; set; }
+        public string Content { get; set; }
     }
 }
