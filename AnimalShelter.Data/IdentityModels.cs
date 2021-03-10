@@ -34,6 +34,8 @@ namespace AnimalShelter.Data
         }
         public DbSet<Vaccine> Vaccines { get; set; }
         public DbSet<Post> Posts { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Reply> Replies { get; set; }
         public DbSet<Animal> Animals { get; set; }
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<Company> Companies { get; set; }
