@@ -46,7 +46,8 @@ namespace AnimalShelter.Services
                                 CompanyId = e.CompanyId,
                                 Name = e.Name,
                                 PhoneNumber = e.PhoneNumber,
-                                Address = e.Address
+                                Address = e.Address,
+                                Rating = e.Rating
                             });
 
                 return query.ToArray();
@@ -65,7 +66,8 @@ namespace AnimalShelter.Services
                         CompanyId = entity.CompanyId,
                         Name = entity.Name,
                         PhoneNumber = entity.PhoneNumber,
-                        Address = entity.Address
+                        Address = entity.Address,
+                        Rating = entity.Rating
                     };
             }
         }

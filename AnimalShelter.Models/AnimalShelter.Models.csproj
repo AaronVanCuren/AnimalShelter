@@ -104,6 +104,8 @@
   <ItemGroup>
     <Compile Include="AnimalCreate.cs" />
     <Compile Include="AnimalRUD.cs" />
+    <Compile Include="CompanyRatingCreate.cs" />
+    <Compile Include="CompanyRatingListItem.cs" />
     <Compile Include="PostCreate.cs" />
     <Compile Include="PostRUD.cs" />
     <Compile Include="CompanyCreate.cs" />

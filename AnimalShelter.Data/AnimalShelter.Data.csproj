@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adopt.cs" />
+    <Compile Include="CompanyRating.cs" />
     <Compile Include="Migrations\202103092112515_InitialCreate.cs" />
     <Compile Include="Migrations\202103092112515_InitialCreate.Designer.cs">
       <DependentUpon>202103092112515_InitialCreate.cs</DependentUpon>
@@ -100,6 +101,10 @@
     <Compile Include="Migrations\202103101630286_Post2.cs" />
     <Compile Include="Migrations\202103101630286_Post2.Designer.cs">
       <DependentUpon>202103101630286_Post2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103102030059_CompanyRating.cs" />
+    <Compile Include="Migrations\202103102030059_CompanyRating.Designer.cs">
+      <DependentUpon>202103102030059_CompanyRating.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Post.cs" />
@@ -126,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103101630286_Post2.resx">
       <DependentUpon>202103101630286_Post2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103102030059_CompanyRating.resx">
+      <DependentUpon>202103102030059_CompanyRating.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

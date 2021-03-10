@@ -28,5 +28,20 @@ namespace AnimalShelter.Data
         public virtual List<Animal> Animals { get; set; }
 
         public virtual List<Post> Posts { get; set; }
+
+        public virtual List<CompanyRating> Ratings { get; set; }
+
+        public double Rating
+        {
+            get
+            {
+                double TotalAverageRating = 0;
+                foreach (var rating in Ratings)
+                {
+                    TotalAverageRating += rating.AverageScore;
+                }
+                return (Ratings.Count > 0) ? TotalAverageRating / Ratings.Count : 0;
+            }
+        }
     }
 }

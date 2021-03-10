@@ -32,6 +32,8 @@ namespace AnimalShelter.Data
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<CompanyRating> Ratings { get; set; }
         public DbSet<Vaccine> Vaccines { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Animal> Animals { get; set; }
