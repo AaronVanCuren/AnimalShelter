@@ -102,6 +102,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdoptCreate.cs" />
+    <Compile Include="AdoptionRUD.cs" />
     <Compile Include="AnimalCreate.cs" />
     <Compile Include="AnimalRUD.cs" />
     <Compile Include="PostCreate.cs" />

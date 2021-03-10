@@ -37,6 +37,7 @@ namespace AnimalShelter.Data
         public DbSet<Animal> Animals { get; set; }
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<Company> Companies { get; set; }
+        public DbSet<Adoption> Adoptions { get; set; } 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

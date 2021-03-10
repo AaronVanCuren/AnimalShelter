@@ -4,36 +4,36 @@ using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 
 namespace AnimalShelter.WebAPI.Controllers
 {
-    [Authorize]
-    public class PostController : ApiController
+    public class AdoptController : ApiController
     {
-        private PostServices CreatePostServices()
+        private AdoptService CreateAdoptionServices()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var postService = new PostServices(userId);
+            var postService = new AdoptService(userId);
             return postService;
         }
 
         public IHttpActionResult Get()
         {
-            PostServices postService = CreatePostServices();
-            var posts = postService.GetPosts();
-            return Ok(posts);
+            AdoptService adoptService = CreateAdoptionServices();
+            var adoptions = adoptService.GetAdoptions();
+            return Ok(adoptions);
         }
 
-        public IHttpActionResult Post(PostCreate post)
+        public IHttpActionResult Post(AdoptCreate adoption)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var service = CreatePostServices();
+            var service = CreateAdoptionServices();
 
-            if (!service.CreatePost(post))
+            if (!service.CreateAdoption(adoption))
                 return InternalServerError();
 
             return Ok();
@@ -41,19 +41,19 @@ namespace AnimalShelter.WebAPI.Controllers
 
         public IHttpActionResult Get(int id)
         {
-            PostServices postService = CreatePostServices();
-            var post = postService.GetPostById(id);
-            return Ok(post);
+            AdoptService adoptService = CreateAdoptionServices();
+            var adopt = adoptService.GetAdoptionById(id);
+            return Ok(adopt);
         }
 
-        public IHttpActionResult Put(PostRUD post)
+        public IHttpActionResult Put(AdoptionRUD adoption)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var service = CreatePostServices();
+            var service = CreateAdoptionServices();
 
-            if (!service.UpdatePost(post))
+            if (!service.UpdateAdoption(adoption))
                 return InternalServerError();
 
             return Ok();
@@ -61,9 +61,9 @@ namespace AnimalShelter.WebAPI.Controllers
 
         public IHttpActionResult Delete(int id)
         {
-            var service = CreatePostServices();
+            var service = CreateAdoptionServices();
 
-            if (!service.DeletePost(id))
+            if (!service.DeleteAdoption(id))
                 return InternalServerError();
 
             return Ok();
