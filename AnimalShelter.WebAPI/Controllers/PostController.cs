@@ -46,18 +46,18 @@ namespace AnimalShelter.WebAPI.Controllers
             return Ok(post);
         }
 
-        /*public IHttpActionResult Put(PostEdit post)
+        public IHttpActionResult Put(PostRUD post)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var service = CreatePostService();
+            var service = CreatePostServices();
 
             if (!service.UpdatePost(post))
                 return InternalServerError();
 
             return Ok();
-        }*/
+        }
 
         public IHttpActionResult Delete(int id)
         {

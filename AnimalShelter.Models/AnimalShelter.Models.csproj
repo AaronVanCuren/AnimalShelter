@@ -105,9 +105,7 @@
     <Compile Include="AnimalCreate.cs" />
     <Compile Include="AnimalRUD.cs" />
     <Compile Include="PostCreate.cs" />
-    <Compile Include="PostDetail.cs" />
-    <Compile Include="PostEdit.cs" />
-    <Compile Include="PostList.cs" />
+    <Compile Include="PostRUD.cs" />
     <Compile Include="CompanyCreate.cs" />
     <Compile Include="CompanyRUD.cs" />
     <Compile Include="ProfileCreate.cs" />
