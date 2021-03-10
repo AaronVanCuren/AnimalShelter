@@ -12,6 +12,7 @@ namespace AnimalShelter.Data
 {
     public class CompanyRating
     {
+        //change
         [Key]
         public int RatingId { get; set; }
 
