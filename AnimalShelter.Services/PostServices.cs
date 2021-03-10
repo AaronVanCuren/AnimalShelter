@@ -32,14 +32,14 @@ namespace AnimalShelter.Services
             }
         }
 
-        public IEnumerable<PostList> GetPosts()
+        public IEnumerable<PostRUD> GetPosts()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query = ctx.Posts
                         .Where(e => e.CompanyId == _userId)
                         .Select(
-                            e => new PostList
+                            e => new PostRUD
                             {
                                 PostId = e.PostId,
                             });
@@ -48,21 +48,21 @@ namespace AnimalShelter.Services
             }
         }
 
-        public PostDetail GetPostById(int id)
+        public PostRUD GetPostById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = ctx.Posts
                         .Single(e => e.PostId == id && e.CompanyId == _userId);
                 return
-                    new PostDetail
+                    new PostRUD
                     {
                         PostId = entity.PostId,
                     };
             }
         }
 
-        /*public bool UpdatePost(PostEdit model)
+        public bool UpdatePost(PostRUD model)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -74,7 +74,7 @@ namespace AnimalShelter.Services
 
                 return ctx.SaveChanges() == 1;
             }
-        }*/
+        }
 
         public bool DeletePost(int postId)
         {
