@@ -12,58 +12,59 @@ namespace AnimalShelter.WebAPI.Controllers
 {
     public class UserController : ApiController
     {
-        private UserService CreateProfileService()
+        private UserService CreateUserService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var profileService = new UserService(userId);
             return profileService;
         }
 
-        public IHttpActionResult Get()
+        public IHttpActionResult GetCustomers()
         {
-            UserService profileService = CreateProfileService();
-            var profiles = profileService.GetProfiles();
+            UserService userService = CreateUserService();
+            var profiles = userService.GetCustomers();
             return Ok(profiles);
         }
 
-        public IHttpActionResult Post(ProfileCreate profile)
+        public IHttpActionResult GetCompanies()
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            var service = CreateProfileService();
-
-            if (!service.CreateProfile(profile))
-                return InternalServerError();
-
-            return Ok();
+            UserService userService = CreateUserService();
+            var profiles = userService.GetCompanies();
+            return Ok(profiles);
         }
 
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult GetVets()
         {
-            UserService profileService = CreateProfileService();
-            var profile = profileService.GetProfileById(id);
+            UserService userService = CreateUserService();
+            var profiles = userService.GetVets();
+            return Ok(profiles);
+        }
+
+        public IHttpActionResult Get(string userName)
+        {
+            UserService profileService = CreateUserService();
+            var profile = profileService.GetUserByUserName(userName);
             return Ok(profile);
         }
 
-        public IHttpActionResult Put(ProfileRUD profile)
+        public IHttpActionResult Put(RegisterBindingModel user)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var service = CreateProfileService();
+            var service = CreateUserService();
 
-            if (!service.UpdateProfile(profile))
+            if (!service.UpdateUser(user))
                 return InternalServerError();
 
             return Ok();
         }
 
-        public IHttpActionResult Delete(int id)
+        public IHttpActionResult Delete(string email)
         {
-            var service = CreateProfileService();
+            var service = CreateUserService();
 
-            if (!service.DeleteProfile(id))
+            if (!service.DeleteUser(email))
                 return InternalServerError();
 
             return Ok();
