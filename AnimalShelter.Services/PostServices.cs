@@ -61,6 +61,18 @@ namespace AnimalShelter.Services
                                 PostId = e.PostId,
                                 ProfileId = e.ProfileId,
                                 AnimalId = e.AnimalId,
+                                Name = e.Name,
+                                Species = e.Species,
+                                Breed = e.Breed,
+                                Sex = e.Sex,
+                                Fixed = e.Fixed,
+                                HasShots = e.HasShots,
+                                Age = e.Age,
+                                Description = e.Description,
+                                AdoptionPrice = e.AdoptionPrice,
+                                IsHouseTrained = e.IsHouseTrained,
+                                IsDeclawed = e.IsDeclawed,
+                                IsEdible = e.IsEdible
                             });
 
                 return query.ToArray();
@@ -78,6 +90,18 @@ namespace AnimalShelter.Services
                     PostId = entity.PostId,
                     ProfileId = entity.ProfileId,
                     AnimalId = entity.AnimalId,
+                    Name = entity.Name,
+                    Species = entity.Species,
+                    Breed = entity.Breed,
+                    Sex = entity.Sex,
+                    Fixed = entity.Fixed,
+                    HasShots = entity.HasShots,
+                    Age = entity.Age,
+                    Description = entity.Description,
+                    AdoptionPrice = entity.AdoptionPrice,
+                    IsHouseTrained = entity.IsHouseTrained,
+                    IsDeclawed = entity.IsDeclawed,
+                    IsEdible = entity.IsEdible
                 };
             }
         }

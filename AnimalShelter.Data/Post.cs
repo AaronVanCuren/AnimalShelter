@@ -8,17 +8,13 @@ using System.Threading.Tasks;
 
 namespace AnimalShelter.Data
 {
-    public class Post
+    public class Post : Animal
     {
         [Required]
         public Guid UserId { get; set; }
 
         [Key]
         public int PostId { get; set; }
-
-        public int AnimalId { get; set; }
-        [ForeignKey(nameof(AnimalId))]
-        public virtual Animal Animal { get; set; }
 
         public int ProfileId { get; set; }
         [ForeignKey(nameof(ProfileId))]
