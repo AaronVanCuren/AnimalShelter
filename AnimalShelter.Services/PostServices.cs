@@ -2,6 +2,7 @@
 using AnimalShelter.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,25 +12,36 @@ namespace AnimalShelter.Services
     public class PostServices
     {
         private readonly Guid _userId;
-
+        
         public PostServices(Guid userId)
         {
             _userId = userId;
         }
-
-        public bool CreatePost(PostCreate model)
+        public bool CreatePost(PostCreate model, Company company)
         {
-            var entity = new Post()
+            CompanyService companyService = new CompanyService(_userId);
+            var c = companyService.GetCompanyById(company.CompanyId);
+            
+            if (c != null)
             {
-                AnimalId = model.AnimalId,
-                CompanyId = model.CompanyId
-            };
+                var entity = new Post()
+                {
+                    AnimalId = model.AnimalId,
+                    CompanyId = model.CompanyId
+                };
 
-            using (var db = new ApplicationDbContext())
-            {
-                db.Posts.Add(entity);
-                return db.SaveChanges() == 1;
+                using (var db = new ApplicationDbContext())
+                {
+                    db.Posts.Add(entity);
+                    return db.SaveChanges() == 1;
+                }
             }
+            else
+            {
+                Console.WriteLine("Would you like to make a company account?");
+            }
+            return false;
+
         }
 
         public IEnumerable<PostRUD> GetPosts()
@@ -57,10 +69,10 @@ namespace AnimalShelter.Services
                 var entity = db.Posts
                         .Single(e => e.PostId == id);
                 return new PostRUD
-                    {
-                        PostId = entity.PostId,
-                        AnimalId = entity.AnimalId,
-                        CompanyId = entity.CompanyId
+                {
+                    PostId = entity.PostId,
+                    AnimalId = entity.AnimalId,
+                    CompanyId = entity.CompanyId
                 };
             }
         }
