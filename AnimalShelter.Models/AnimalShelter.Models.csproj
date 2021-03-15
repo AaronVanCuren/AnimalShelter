@@ -112,10 +112,6 @@
     <Compile Include="CommentRUD.cs" />
     <Compile Include="PostCreate.cs" />
     <Compile Include="PostRUD.cs" />
-    <Compile Include="CompanyCreate.cs" />
-    <Compile Include="CompanyRUD.cs" />
-    <Compile Include="ProfileCreate.cs" />
-    <Compile Include="ProfileRUD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReplyCreate.cs" />
     <Compile Include="ReplyRUD.cs" />
