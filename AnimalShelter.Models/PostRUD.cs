@@ -10,6 +10,6 @@ namespace AnimalShelter.Models
     {
         public int PostId { get; set; }
         public int AnimalId { get; set; }
-        public int CompanyId { get; set; }
+        public int ProfileId { get; set; }
     }
 }

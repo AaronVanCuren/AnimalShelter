@@ -12,22 +12,27 @@ namespace AnimalShelter.Services
     public class PostServices
     {
         private readonly Guid _userId;
+        private readonly UserType _userType;
         
-        public PostServices(Guid userId)
+        public PostServices(Guid userId, UserType userType)
         {
             _userId = userId;
+            _userType = userType;
         }
-        public bool CreatePost(PostCreate model, Company company)
+        public bool CreatePost(PostCreate model)
         {
-            CompanyService companyService = new CompanyService(_userId);
-            var c = companyService.GetCompanyById(company.CompanyId);
+            UserService companyService = new UserService(_userId);
+
+            //UserType userType = _userType;
+
+            var c = companyService.GetUserByType(_userType);
             
-            if (c != null)
+            if (c.UserType == UserType.company)
             {
                 var entity = new Post()
                 {
-                    AnimalId = model.AnimalId,
-                    CompanyId = model.CompanyId
+                    ProfileId = model.ProfileId,
+                    AnimalId = model.AnimalId
                 };
 
                 using (var db = new ApplicationDbContext())
@@ -54,8 +59,8 @@ namespace AnimalShelter.Services
                             e => new PostRUD
                             {
                                 PostId = e.PostId,
+                                ProfileId = e.ProfileId,
                                 AnimalId = e.AnimalId,
-                                CompanyId = e.CompanyId
                             });
 
                 return query.ToArray();
@@ -71,8 +76,8 @@ namespace AnimalShelter.Services
                 return new PostRUD
                 {
                     PostId = entity.PostId,
+                    ProfileId = entity.ProfileId,
                     AnimalId = entity.AnimalId,
-                    CompanyId = entity.CompanyId
                 };
             }
         }
@@ -83,9 +88,9 @@ namespace AnimalShelter.Services
             {
                 var entity = db.Posts
                         .Single(e => e.PostId == model.PostId && e.UserId == _userId);
-
+                // Need property of animals that are editable
+                entity.ProfileId = model.ProfileId;
                 entity.AnimalId = model.AnimalId;
-                entity.CompanyId = model.CompanyId;
 
                 return db.SaveChanges() == 1;
             }

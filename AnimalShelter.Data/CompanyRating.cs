@@ -33,8 +33,8 @@ namespace AnimalShelter.Data
         }
 
         [Required]
-        public int CompanyId { get; set; }
-        [ForeignKey(nameof(CompanyId))]
-        public virtual Company Company { get; set; }
+        public UserType UserType { get; set; }
+        [ForeignKey(nameof(UserType))]
+        public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }
