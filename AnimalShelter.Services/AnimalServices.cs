@@ -41,7 +41,7 @@ namespace AnimalShelter.Services
             }
         }
 
-        public IEnumerable<AnimalRUD> GetAnimals()
+        public List<AnimalRUD> GetAnimals()
         {
             using (var db = new ApplicationDbContext())
             {
@@ -64,7 +64,7 @@ namespace AnimalShelter.Services
                                 IsEdible = e.IsEdible
                             });
 
-                return query.ToArray();
+                return query.ToList();
             }
         }
 
