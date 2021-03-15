@@ -329,7 +329,16 @@ namespace AnimalShelter.WebAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUser() 
+            {
+                UserType = model.UserType,
+                FullName = model.FullName,
+                CompanyName = model.CompanyName,
+                UserName = model.UserName,
+                Email = model.Email,
+                PhoneNumber = model.PhoneNumber,
+                Address = model.Address
+            };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
