@@ -10,18 +10,18 @@ using System.Web.Mvc;
 
 namespace AnimalShelter.WebAPI.Controllers
 {
-    public class ProfileController : ApiController
+    public class UserController : ApiController
     {
-        private ProfileService CreateProfileService()
+        private UserService CreateProfileService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var profileService = new ProfileService(userId);
+            var profileService = new UserService(userId);
             return profileService;
         }
 
         public IHttpActionResult Get()
         {
-            ProfileService profileService = CreateProfileService();
+            UserService profileService = CreateProfileService();
             var profiles = profileService.GetProfiles();
             return Ok(profiles);
         }
@@ -41,7 +41,7 @@ namespace AnimalShelter.WebAPI.Controllers
 
         public IHttpActionResult Get(int id)
         {
-            ProfileService profileService = CreateProfileService();
+            UserService profileService = CreateProfileService();
             var profile = profileService.GetProfileById(id);
             return Ok(profile);
         }
