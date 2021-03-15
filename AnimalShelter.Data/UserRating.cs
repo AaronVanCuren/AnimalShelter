@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace AnimalShelter.Data
 {
-    public class CompanyRating
+    public class UserRating
     {
         //change
         [Key]
@@ -33,8 +33,8 @@ namespace AnimalShelter.Data
         }
 
         [Required]
-        public UserType UserType { get; set; }
-        [ForeignKey(nameof(UserType))]
+        public int ProfileId { get; set; }
+        [ForeignKey(nameof(ProfileId))]
         public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }

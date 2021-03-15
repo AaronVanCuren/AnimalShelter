@@ -86,7 +86,7 @@
   <ItemGroup>
     <Compile Include="AdoptService.cs" />
     <Compile Include="AnimalServices.cs" />
-    <Compile Include="CompanyRatingService.cs" />
+    <Compile Include="UserRatingService.cs" />
     <Compile Include="CommentServices.cs" />
     <Compile Include="PostServices.cs" />
     <Compile Include="UserService.cs" />

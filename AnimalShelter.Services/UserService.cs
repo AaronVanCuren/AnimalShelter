@@ -91,6 +91,19 @@ namespace AnimalShelter.Services
             }
         }
 
+        public ApplicationUser GetUserByProfileId(int profileId)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                var entity = db.Users
+                        .Single(e => e.ProfileId == profileId && e.UserId == _userId);
+                return new ApplicationUser
+                {
+                    ProfileId = entity.ProfileId,
+                };
+            }
+        }
+
         public ApplicationUser GetUserByType(UserType userType)
         {
             using (var db = new ApplicationDbContext())
