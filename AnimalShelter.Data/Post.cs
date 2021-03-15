@@ -20,9 +20,9 @@ namespace AnimalShelter.Data
         [ForeignKey(nameof(AnimalId))]
         public virtual Animal Animal { get; set; }
 
-        public int CompanyId { get; set; }
-        [ForeignKey(nameof(CompanyId))]
-        public virtual Company Company { get; set; }
+        public int ProfileId { get; set; }
+        [ForeignKey(nameof(ProfileId))]
+        public virtual ApplicationUser ApplicationUser { get; set; }
         public virtual List<Comment> Comments { get; set; }
     }
 }

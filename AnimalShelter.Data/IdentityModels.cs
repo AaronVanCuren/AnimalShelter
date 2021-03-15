@@ -18,6 +18,8 @@ namespace AnimalShelter.Data
     {
         public Guid UserId { get; set; }
 
+        public int ProfileId { get; set; }
+
         public UserType UserType { get; set; }
 
         public string FullName { get; set; }
