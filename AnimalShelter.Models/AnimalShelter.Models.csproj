@@ -102,6 +102,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountBindingModels.cs" />
     <Compile Include="AdoptCreate.cs" />
     <Compile Include="AdoptionRUD.cs" />
     <Compile Include="AnimalCreate.cs" />
