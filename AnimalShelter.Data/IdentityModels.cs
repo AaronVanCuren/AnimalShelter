@@ -34,7 +34,7 @@ namespace AnimalShelter.Data
 
         public virtual List<Post> Posts { get; set; }
 
-        public virtual List<CompanyRating> Ratings { get; set; }
+        public virtual List<UserRating> Ratings { get; set; }
 
         public double Rating
         {
@@ -72,7 +72,7 @@ namespace AnimalShelter.Data
 
         public DbSet<Adoption> Adoptions { get; set; } 
         public DbSet<Animal> Animals { get; set; }
-        public DbSet<CompanyRating> Ratings { get; set; }
+        public DbSet<UserRating> Ratings { get; set; }
         public DbSet<Vaccine> Vaccines { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Comment> Comments { get; set; }

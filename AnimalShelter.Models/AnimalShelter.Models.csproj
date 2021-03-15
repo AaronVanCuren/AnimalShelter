@@ -107,8 +107,8 @@
     <Compile Include="AdoptionRUD.cs" />
     <Compile Include="AnimalCreate.cs" />
     <Compile Include="AnimalRUD.cs" />
-    <Compile Include="CompanyRatingCreate.cs" />
-    <Compile Include="CompanyRatingListItem.cs" />
+    <Compile Include="UserRatingCreate.cs" />
+    <Compile Include="UserRatingListItem.cs" />
     <Compile Include="CommentCreate.cs" />
     <Compile Include="CommentRUD.cs" />
     <Compile Include="PostCreate.cs" />

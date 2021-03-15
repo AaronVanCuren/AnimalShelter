@@ -13,21 +13,21 @@ namespace AnimalShelter.Services
     {
         private readonly Guid _userId;
         private readonly UserType _userType;
+        private readonly int _profileId;
 
-        public PostServices(Guid userId, UserType userType)
+        public PostServices(Guid userId, UserType userType, int profileId)
         {
             _userId = userId;
             _userType = userType;
+            _profileId = profileId;
         }
         public bool CreatePost(PostCreate model)
         {
-            UserService companyService = new UserService(_userId);
+            UserService companyType = new UserService(_userId);
 
-            //UserType userType = _userType;
+            var type = companyType.GetUserByType(_userType);
 
-            var c = companyService.GetUserByType(_userType);
-
-            if (c.UserType == UserType.company)
+            if (type.UserType == UserType.company)
             {
                 var entity = new Post()
                 {
@@ -108,29 +108,57 @@ namespace AnimalShelter.Services
 
         public bool UpdatePost(PostRUD model)
         {
-            using (var db = new ApplicationDbContext())
-            {
-                var entity = db.Posts
-                        .Single(e => e.PostId == model.PostId && e.UserId == _userId);
-                // Need property of animals that are editable
-                entity.ProfileId = model.ProfileId;
-                entity.AnimalId = model.AnimalId;
+            UserService companyType = new UserService(_userId);
+            UserService companyId = new UserService(_userId);
 
-                return db.SaveChanges() == 1;
+            var type = companyType.GetUserByType(_userType);
+            var id = companyId.GetUserByProfileId(_profileId);
+
+            if (type.UserType == UserType.company && id.ProfileId == _profileId)
+            {
+                using (var db = new ApplicationDbContext())
+                {
+                    var entity = db.Posts
+                            .Single(e => e.PostId == model.PostId && e.UserId == _userId);
+                    // Need property of animals that are editable
+                    entity.ProfileId = model.ProfileId;
+                    entity.AnimalId = model.AnimalId;
+
+                    return db.SaveChanges() == 1;
+                }
             }
+            else
+            {
+                Console.WriteLine("Would you like to make a company account?");
+            }
+            return false;
         }
 
         public bool DeletePost(int postId)
         {
-            using (var db = new ApplicationDbContext())
+            UserService companyType = new UserService(_userId);
+            UserService companyId = new UserService(_userId);
+
+            var type = companyType.GetUserByType(_userType);
+            var id = companyId.GetUserByProfileId(_profileId);
+
+            if (type.UserType == UserType.company && id.ProfileId == _profileId)
             {
-                var entity = db.Posts
-                        .Single(e => e.PostId == postId && e.UserId == _userId);
+                using (var db = new ApplicationDbContext())
+                {
+                    var entity = db.Posts
+                            .Single(e => e.PostId == postId && e.UserId == _userId);
 
-                db.Posts.Remove(entity);
+                    db.Posts.Remove(entity);
 
-                return db.SaveChanges() == 1;
+                    return db.SaveChanges() == 1;
+                }
             }
+            else
+            {
+                Console.WriteLine("Would you like to make a company account?");
+            }
+            return false;
         }
     }
 }

@@ -216,7 +216,7 @@
     <Compile Include="Controllers\AdoptController.cs" />
     <Compile Include="Controllers\AnimalController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
-    <Compile Include="Controllers\CompanyRatingController.cs" />
+    <Compile Include="Controllers\UserRatingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\UserController.cs" />

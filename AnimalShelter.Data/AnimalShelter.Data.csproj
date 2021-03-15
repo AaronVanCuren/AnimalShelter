@@ -86,7 +86,7 @@
   <ItemGroup>
     <Compile Include="Adoption.cs" />
     <Compile Include="Comment.cs" />
-    <Compile Include="CompanyRating.cs" />
+    <Compile Include="UserRating.cs" />
     <Compile Include="Post.cs" />
     <Compile Include="Animal.cs" />
     <Compile Include="IdentityModels.cs" />
