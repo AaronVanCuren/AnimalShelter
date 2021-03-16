@@ -9,6 +9,6 @@ namespace AnimalShelter.Models
     public class PostRUD
     {
         public int PostId { get; set; }
-        public int AnimalId { get; set; }
+        public IQueryable AnimalId { get; set; }
     }
 }
