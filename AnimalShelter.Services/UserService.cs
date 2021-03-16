@@ -99,7 +99,7 @@ namespace AnimalShelter.Services
                         .Single(e => e.ProfileId == profileId && e.UserId == _userId);
                 return new ApplicationUser
                 {
-                    ProfileId = entity.ProfileId,
+                    ProfileId = entity.ProfileId
                 };
             }
         }

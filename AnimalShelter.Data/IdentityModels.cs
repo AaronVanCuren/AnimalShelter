@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Conventions;
@@ -18,6 +19,7 @@ namespace AnimalShelter.Data
     {
         public Guid UserId { get; set; }
 
+        [Key]
         public int ProfileId { get; set; }
 
         public UserType UserType { get; set; }
@@ -27,7 +29,9 @@ namespace AnimalShelter.Data
         public string CompanyName { get; set; }
 
         public string Address { get; set; }
-        
+
+        //public virtual string Adoption { get; set; }
+
         public virtual List<Vaccine> Vaccines { get; set; }
 
         public virtual List<Animal> Animals { get; set; }
@@ -70,6 +74,7 @@ namespace AnimalShelter.Data
             return new ApplicationDbContext();
         }
 
+        //public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<Adoption> Adoptions { get; set; } 
         public DbSet<Animal> Animals { get; set; }
         public DbSet<UserRating> Ratings { get; set; }

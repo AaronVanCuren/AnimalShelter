@@ -21,11 +21,8 @@ namespace AnimalShelter.Services
 
         public bool CreateUserRating(UserRatingCreate model)
         {
-            UserService companyType = new UserService(_userId);
 
-            var type = companyType.GetUserByType(_userType);
-
-            if (type.UserType == UserType.customer)
+            if (_userType == UserType.customer)
             {
 
                 var entity = new UserRating()

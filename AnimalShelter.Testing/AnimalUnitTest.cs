@@ -10,8 +10,7 @@ namespace AnimalShelter.Testing
     [TestClass]
     public class AnimalUnitTest
     {
-        public static Guid userId = new Guid("62FA647C-AD54-4BCC-A860-E5A2664B019D"
-);
+        public static Guid userId = new Guid("62FA647C-AD54-4BCC-A860-E5A2664B019D");
 
         private AnimalServices _repo = new AnimalServices(userId);
 
