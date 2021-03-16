@@ -13,13 +13,11 @@ namespace AnimalShelter.Services
     {
         private readonly Guid _userId;
         private readonly UserType _userType;
-        private readonly int _profileId;
 
-        public PostServices(Guid userId, UserType userType, int profileId)
+        public PostServices(Guid userId, UserType userType)
         {
             _userId = userId;
             _userType = userType;
-            _profileId = profileId;
         }
         public bool CreatePost(PostCreate model)
         {
@@ -61,10 +59,18 @@ namespace AnimalShelter.Services
                                     {
                                         AnimalId = a.AnimalId,
                                         Name = a.Name,
-
-
+                                        Species = a.Species,
+                                        Breed = a.Breed,
+                                        Sex = a.Sex,
+                                        Fixed = a.Fixed,
+                                        Vaccines = a.Vaccines,
+                                        Age = a.Age,
+                                        Description = a.Description,
+                                        AdoptionPrice = a.AdoptionPrice,
+                                        IsHouseTrained = a.IsHouseTrained,
+                                        IsDeclawed = a.IsDeclawed,
+                                        IsEdible = a.IsEdible
                                     })
-
                             });
 
                 return query.ToArray();
@@ -73,29 +79,41 @@ namespace AnimalShelter.Services
         }
 
 
-        public PostRUD GetPostById(int id)
+        public PostListItem GetPostById(int id)
         {
             using (var db = new ApplicationDbContext())
             {
                 var entity = db.Posts
                         .Single(e => e.PostId == id);
-                return new PostRUD
+                return new PostListItem
                 {
                     PostId = entity.PostId,
-                    AnimalId = entity.AnimalId
+                    AnimalId = db.Animals
+                        .Where(a => a.AnimalId == entity.AnimalId)
+                        .Select(
+                        a => new AnimalRUD
+                        {
+                            AnimalId = a.AnimalId,
+                            Name = a.Name,
+                            Species = a.Species,
+                            Breed = a.Breed,
+                            Sex = a.Sex,
+                            Fixed = a.Fixed,
+                            Vaccines = a.Vaccines,
+                            Age = a.Age,
+                            Description = a.Description,
+                            AdoptionPrice = a.AdoptionPrice,
+                            IsHouseTrained = a.IsHouseTrained,
+                            IsDeclawed = a.IsDeclawed,
+                            IsEdible = a.IsEdible
+                        })
                 };
             }
         }
 
         public bool UpdatePost(PostRUD model)
         {
-            UserService companyType = new UserService(_userId);
-            UserService companyId = new UserService(_userId);
-
-            var type = companyType.GetUserByType(_userType);
-            var id = companyId.GetUserByProfileId(_profileId);
-
-            if (type.UserType == UserType.company && id.ProfileId == _profileId)
+            if (_userType == UserType.company)
             {
                 using (var db = new ApplicationDbContext())
                 {
@@ -116,13 +134,7 @@ namespace AnimalShelter.Services
 
         public bool DeletePost(int postId)
         {
-            UserService companyType = new UserService(_userId);
-            UserService companyId = new UserService(_userId);
-
-            var type = companyType.GetUserByType(_userType);
-            var id = companyId.GetUserByProfileId(_profileId);
-
-            if (type.UserType == UserType.company && id.ProfileId == _profileId)
+            if (_userType == UserType.company)
             {
                 using (var db = new ApplicationDbContext())
                 {
