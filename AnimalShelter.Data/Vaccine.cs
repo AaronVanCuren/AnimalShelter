@@ -12,8 +12,10 @@ namespace AnimalShelter.Data
         [Key]
         public int VaccineId { get; set; }
         public string Name { get; set; }
+
         [Required]
         public string CommonName { get; set; }
+
         [Required]
         public string VaccinationSchedule { get; set; }
     }

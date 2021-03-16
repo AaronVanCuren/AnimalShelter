@@ -104,6 +104,7 @@
   <ItemGroup>
     <Compile Include="AccountBindingModels.cs" />
     <Compile Include="AdoptCreate.cs" />
+    <Compile Include="AdoptionListItem.cs" />
     <Compile Include="AdoptionRUD.cs" />
     <Compile Include="AnimalCreate.cs" />
     <Compile Include="AnimalRUD.cs" />

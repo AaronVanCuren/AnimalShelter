@@ -12,18 +12,18 @@ namespace AnimalShelter.Services
     {
         private readonly Guid _userId;
         private readonly UserType _userType;
+        private readonly int _profileId;
 
-        public AdoptService(Guid userId, UserType userType)
+        public AdoptService(Guid userId, UserType userType, int profileId)
         {
             _userId = userId;
             _userType = userType;
+            _profileId = profileId;
         }
 
         public bool CreateAdoption(AdoptCreate model)
         {
-            UserService customerService = new UserService(_userId);
-            var c = customerService.GetUserByType(_userType);
-            if (c.UserType == UserType.customer)
+            if (_userType == UserType.customer)
             {
                 var entity = new Adoption()
                 {
@@ -45,17 +45,42 @@ namespace AnimalShelter.Services
 
 
 
-        public IEnumerable<AdoptionRUD> GetAdoptions()
+        public IEnumerable<AdoptionListItem> GetAdoptions()
         {
-            using (var ctx = new ApplicationDbContext())
+            using (var db = new ApplicationDbContext())
             {
-                var query = ctx.Adoptions
+                var query = db.Adoptions
                         .Where(e => e.UserId == _userId)
                         .Select(
-                            e => new AdoptionRUD
+                            e => new AdoptionListItem
                             {
                                 AdoptionId = e.AdoptionId,
-                                PostId = e.PostId,
+                                PostId = db.Posts
+                                    .Where(a => a.PostId == e.PostId)
+                                    .Select(
+                                    a => new PostListItem
+                                    {
+                                        PostId = a.PostId,
+                                        AnimalId = db.Animals
+                                        .Where(b => b.AnimalId == a.AnimalId)
+                                        .Select(
+                                        b => new AnimalRUD
+                                        {
+                                            AnimalId = b.AnimalId,
+                                            Name = b.Name,
+                                            Species = b.Species,
+                                            Breed = b.Breed,
+                                            Sex = b.Sex,
+                                            Fixed = b.Fixed,
+                                            Vaccines = b.Vaccines,
+                                            Age = b.Age,
+                                            Description = b.Description,
+                                            AdoptionPrice = b.AdoptionPrice,
+                                            IsHouseTrained = b.IsHouseTrained,
+                                            IsDeclawed = b.IsDeclawed,
+                                            IsEdible = b.IsEdible,
+                                        })
+                                    })
                             });
 
                 return query.ToArray();
@@ -64,42 +89,55 @@ namespace AnimalShelter.Services
 
         public AdoptionRUD GetAdoptionById(int id)
         {
-            using (var ctx = new ApplicationDbContext())
+            using (var db = new ApplicationDbContext())
             {
-                var entity = ctx.Adoptions
+                var entity = db.Adoptions
                         .Single(e => e.AdoptionId == id && e.UserId == _userId);
                 return
                     new AdoptionRUD
                     {
                         AdoptionId = entity.AdoptionId,
+                        PostId = entity.PostId
                     };
             }
         }
 
         public bool UpdateAdoption(AdoptionRUD model)
         {
-            using (var ctx = new ApplicationDbContext())
+            if (_userType == UserType.customer)
+                using (var db = new ApplicationDbContext())
+                {
+                    var entity = db.Adoptions
+                            .Single(e => e.AdoptionId == model.AdoptionId && e.UserId == _userId);
+
+                    entity.PostId = model.PostId;
+
+                    return db.SaveChanges() == 1;
+                }
+            else
             {
-                var entity = ctx.Adoptions
-                        .Single(e => e.AdoptionId == model.AdoptionId && e.UserId == _userId);
-
-                entity.PostId = model.PostId;
-
-                return ctx.SaveChanges() == 1;
+                Console.WriteLine("Would you like to make a customer account?");
             }
+            return false;
         }
 
         public bool DeleteAdoption(int id)
         {
-            using (var ctx = new ApplicationDbContext())
+            if (_userType == UserType.customer)
+                using (var db = new ApplicationDbContext())
+                {
+                    var entity = db.Adoptions
+                            .Single(e => e.AdoptionId == id && e.UserId == _userId);
+
+                    db.Adoptions.Remove(entity);
+
+                    return db.SaveChanges() == 1;
+                }
+            else
             {
-                var entity = ctx.Adoptions
-                        .Single(e => e.AdoptionId == id && e.UserId == _userId);
-
-                ctx.Adoptions.Remove(entity);
-
-                return ctx.SaveChanges() == 1;
+                Console.WriteLine("Would you like to make a customer account?");
             }
+            return false;
         }
     }
 }
