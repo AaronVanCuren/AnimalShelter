@@ -39,45 +39,45 @@ namespace AnimalShelter.Models
         [Display(Name = "User type")]
         public UserType UserType { get; set; }
 
-        [StringLength(100, ErrorMessage = "The {0} must be less than {1} characters.")]
-        [DataType(DataType.Text)]
+        //[StringLength(100, ErrorMessage = "The {0} must be less than {1} characters.")]
+        //[DataType(DataType.Text)]
         [Display(Name = "Full Name (if applicable)")]
         public string FullName { get; set; }
 
-        [StringLength(100, ErrorMessage = "The {0} must be less than {1} characters")]
-        [DataType(DataType.Text)]
+        //[StringLength(100, ErrorMessage = "The {0} must be less than {1} characters")]
+        //[DataType(DataType.Text)]
         [Display(Name = "Company Name (if applicable)")]
         public string CompanyName { get; set; }
 
         [Required]
-        [StringLength(20, ErrorMessage = "The {0} must be less than {1} characters at least {2} characters long.", MinimumLength = 6)]
-        [DataType(DataType.Text)]
+        //[StringLength(20, ErrorMessage = "The {0} must be less than {1} characters at least {2} characters long.", MinimumLength = 6)]
+        //[DataType(DataType.Text)]
         [Display(Name = "Username")]
         public string UserName { get; set; }
 
         [Required]
-        [DataType(DataType.EmailAddress)]
+        //[DataType(DataType.EmailAddress)]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required]
-        [StringLength(12, ErrorMessage = "Please enter a phone number using the following format: XXX-XXX-XXXX.", MinimumLength = 12)]
-        [DataType(DataType.PhoneNumber)]
+        //[StringLength(12, ErrorMessage = "Please enter a phone number using the following format: XXX-XXX-XXXX.", MinimumLength = 12)]
+        //[DataType(DataType.PhoneNumber)]
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
 
         [Required]
-        [DataType(DataType.Text)]
+        //[DataType(DataType.Text)]
         [Display(Name = "Address")]
         public string Address { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
-        [DataType(DataType.Password)]
+        //[StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        //[DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
-        [DataType(DataType.Password)]
+        //[DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
