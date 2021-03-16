@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Conventions;
@@ -18,6 +19,7 @@ namespace AnimalShelter.Data
     {
         public Guid UserId { get; set; }
 
+        [Key]
         public int ProfileId { get; set; }
 
         public UserType UserType { get; set; }
