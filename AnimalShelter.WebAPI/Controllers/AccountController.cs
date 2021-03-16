@@ -330,29 +330,61 @@ namespace AnimalShelter.WebAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() 
+            if (model.UserType == UserType.customer || model.UserType == UserType.vet)
             {
-                UserType = model.UserType,
-                FullName = model.FullName,
-                CompanyName = model.CompanyName,
-                UserName = model.UserName,
-                Email = model.Email,
-                PhoneNumber = model.PhoneNumber,
-                Address = model.Address
-            };
+                var user = new ApplicationUser()
+                {
+                    UserType = model.UserType,
+                    FullName = model.FullName,
+                    UserName = model.UserName,
+                    Email = model.Email,
+                    PhoneNumber = model.PhoneNumber,
+                    Address = model.Address
+                };
+                IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
-            IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+                if (!result.Succeeded)
+                {
+                    return GetErrorResult(result);
+                }
 
-            if (!result.Succeeded)
-            {
-                return GetErrorResult(result);
-            }
-
-            using (var db = new ApplicationDbContext())
-            {
-                db.Users.Add(user);
-                db.SaveChanges();
+                //using (var db = new ApplicationDbContext())
+                //{
+                //    db.Users.Add(user);
+                //    db.SaveChanges();
+                //    return Ok();
+                //}
                 return Ok();
+            }
+            else if (model.UserType == UserType.company)
+            {
+                var user = new ApplicationUser()
+                {
+                    UserType = model.UserType,
+                    CompanyName = model.CompanyName,
+                    UserName = model.UserName,
+                    Email = model.Email,
+                    PhoneNumber = model.PhoneNumber,
+                    Address = model.Address
+                };
+                IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+
+                if (!result.Succeeded)
+                {
+                    return GetErrorResult(result);
+                }
+
+                //using (var db = new ApplicationDbContext())
+                //{
+                //    db.Users.Add(user);
+                //    db.SaveChanges();
+                //    return Ok();
+                //}
+                return Ok();
+            }
+            else
+            {
+                return InternalServerError();
             }
         }
 
