@@ -23,11 +23,7 @@ namespace AnimalShelter.Services
         }
         public bool CreatePost(PostCreate model)
         {
-            UserService companyType = new UserService(_userId);
-
-            var type = companyType.GetUserByType(_userType);
-
-            if (type.UserType == UserType.company)
+            if (_userType == UserType.company)
             {
                 var entity = new Post()
                 {
@@ -48,7 +44,7 @@ namespace AnimalShelter.Services
 
         }
 
-        public IEnumerable<PostRUD> GetPosts()
+        public IEnumerable<PostListItem> GetPosts()
         {
             using (var db = new ApplicationDbContext())
             {
@@ -67,27 +63,39 @@ namespace AnimalShelter.Services
                                             Name = a.Name,
 
                                         })
+                            e => new PostListItem
+                            {
+                                PostId = e.PostId,
+                                AnimalId = db.Animals
+                                    .Where(a => a.AnimalId == e.AnimalId)
+                                    .Select(
+                                    a => new AnimalRUD
+                                    {
+                                        AnimalId = a.AnimalId,
+                                        Name = a.Name,
+
+
+                                    })
+
+                            });
 
                         }); return query.ToArray();
             }
-
-            
         }
-    
 
-    public PostRUD GetPostById(int id)
-    {
-        using (var db = new ApplicationDbContext())
+        public PostRUD GetPostById(int id)
         {
-            var entity = db.Posts
-                    .Single(e => e.PostId == id);
-            return new PostRUD
+            using (var db = new ApplicationDbContext())
             {
-                PostId = entity.PostId,
-                AnimalId = entity.AnimalId
-            };
+                var entity = db.Posts
+                        .Single(e => e.PostId == id);
+                return new PostRUD
+                {
+                    PostId = entity.PostId,
+                    AnimalId = entity.AnimalId
+                };
+            }
         }
-    }
 
     public bool UpdatePost(PostRUD model)
     {
