@@ -10,6 +10,7 @@ namespace AnimalShelter.Testing
 {
     public class FakeAnimalService : AnimalServices
     {
+        public static Guid userId = new Guid("62FA647C-AD54-4BCC-A860-E5A2664B019D");
 
         private readonly Guid _userId;
 

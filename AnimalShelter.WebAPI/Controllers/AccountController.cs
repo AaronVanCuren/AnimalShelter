@@ -17,6 +17,7 @@ using AnimalShelter.WebAPI.Models;
 using AnimalShelter.WebAPI.Providers;
 using AnimalShelter.WebAPI.Results;
 using AnimalShelter.Data;
+using AnimalShelter.Models;
 
 namespace AnimalShelter.WebAPI.Controllers
 {
@@ -347,7 +348,12 @@ namespace AnimalShelter.WebAPI.Controllers
                 return GetErrorResult(result);
             }
 
-            return Ok();
+            using (var db = new ApplicationDbContext())
+            {
+                db.Users.Add(user);
+                db.SaveChanges();
+                return Ok();
+            }
         }
 
         // POST api/Account/RegisterExternal

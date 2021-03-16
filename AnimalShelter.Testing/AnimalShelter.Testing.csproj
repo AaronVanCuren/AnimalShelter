@@ -78,6 +78,7 @@
     <Compile Include="AnimalUnitTest.cs" />
     <Compile Include="PostUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserRatingTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

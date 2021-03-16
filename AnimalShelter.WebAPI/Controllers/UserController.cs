@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
-using System.Web.Mvc;
 
 namespace AnimalShelter.WebAPI.Controllers
 {
@@ -19,6 +18,7 @@ namespace AnimalShelter.WebAPI.Controllers
             return profileService;
         }
 
+        [HttpGet]
         public IHttpActionResult GetCustomers()
         {
             UserService userService = CreateUserService();
@@ -26,6 +26,7 @@ namespace AnimalShelter.WebAPI.Controllers
             return Ok(profiles);
         }
 
+        [HttpGet]
         public IHttpActionResult GetCompanies()
         {
             UserService userService = CreateUserService();
@@ -33,6 +34,7 @@ namespace AnimalShelter.WebAPI.Controllers
             return Ok(profiles);
         }
 
+        [HttpGet]
         public IHttpActionResult GetVets()
         {
             UserService userService = CreateUserService();
