@@ -1,4 +1,4 @@
-﻿using AnimalShelter.Data;
+using AnimalShelter.Data;
 using AnimalShelter.Models;
 using AnimalShelter.Services;
 using AnimalShelter.WebAPI.Controllers;
@@ -12,8 +12,6 @@ namespace AnimalShelter.Testing
     [TestClass]
     public class AnimalUnitTest
     {
-        public static Guid userId = new Guid("62FA647C-AD54-4BCC-A860-E5A2664B019D");
-
         public static Guid userId = new Guid("b3dad667-e8f6-4078-8f3f-90168337b01f");
         private AnimalServices _repo = new AnimalServices(userId);
         private List<Animal> _animals = new List<Animal>();
@@ -64,7 +62,6 @@ namespace AnimalShelter.Testing
 
             Assert.IsTrue(wasAdded);
         }
-
         [TestMethod]
         public void GetAnimalByIdTest()
         {
@@ -105,4 +102,5 @@ namespace AnimalShelter.Testing
 
         }
     }
+
 }

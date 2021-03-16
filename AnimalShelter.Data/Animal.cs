@@ -29,7 +29,7 @@ namespace AnimalShelter.Data
         [Required]
         public bool Fixed { get; set; }
 
-        public bool HasShots { get; set; }
+        public virtual List<Vaccine> Vaccines { get; set; }
 
         [Required]
         public string Age { get; set; }

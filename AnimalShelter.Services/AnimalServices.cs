@@ -26,7 +26,7 @@ namespace AnimalShelter.Services
                 Breed = animal.Breed,
                 Sex = animal.Sex,
                 Fixed = animal.Fixed,
-                HasShots = animal.HasShots,
+                Vaccines = animal.Vaccines,
                 Age = animal.Age,
                 Description = animal.Description,
                 AdoptionPrice = animal.AdoptionPrice,
@@ -55,7 +55,7 @@ namespace AnimalShelter.Services
                                 Breed = e.Breed,
                                 Sex = e.Sex,
                                 Fixed = e.Fixed,
-                                HasShots = e.HasShots,
+                                Vaccines = e.Vaccines,
                                 Age = e.Age,
                                 Description = e.Description,
                                 AdoptionPrice = e.AdoptionPrice,
@@ -82,7 +82,7 @@ namespace AnimalShelter.Services
                     Breed = entity.Breed,
                     Sex = entity.Sex,
                     Fixed = entity.Fixed,
-                    HasShots = entity.HasShots,
+                    Vaccines = entity.Vaccines,
                     Age = entity.Age,
                     Description = entity.Description,
                     AdoptionPrice = entity.AdoptionPrice,
@@ -104,7 +104,7 @@ namespace AnimalShelter.Services
                 entity.Breed = animal.Breed;
                 entity.Sex = animal.Sex;
                 entity.Fixed = animal.Fixed;
-                entity.HasShots = animal.HasShots;
+                entity.Vaccines = animal.Vaccines;
                 entity.Age = animal.Age;
                 entity.Description = animal.Description;
                 entity.AdoptionPrice = animal.AdoptionPrice;

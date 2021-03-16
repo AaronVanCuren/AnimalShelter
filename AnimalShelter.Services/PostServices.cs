@@ -31,7 +31,6 @@ namespace AnimalShelter.Services
             {
                 var entity = new Post()
                 {
-                    ProfileId = model.ProfileId,
                     AnimalId = model.AnimalId
                 };
 
@@ -59,20 +58,8 @@ namespace AnimalShelter.Services
                             e => new PostRUD
                             {
                                 PostId = e.PostId,
-                                ProfileId = e.ProfileId,
-                                AnimalId = e.AnimalId,
-                                Name = e.Name,
-                                Species = e.Species,
-                                Breed = e.Breed,
-                                Sex = e.Sex,
-                                Fixed = e.Fixed,
-                                HasShots = e.HasShots,
-                                Age = e.Age,
-                                Description = e.Description,
-                                AdoptionPrice = e.AdoptionPrice,
-                                IsHouseTrained = e.IsHouseTrained,
-                                IsDeclawed = e.IsDeclawed,
-                                IsEdible = e.IsEdible
+                                AnimalId = e.AnimalId
+                                
                             });
 
                 return query.ToArray();
@@ -88,20 +75,7 @@ namespace AnimalShelter.Services
                 return new PostRUD
                 {
                     PostId = entity.PostId,
-                    ProfileId = entity.ProfileId,
-                    AnimalId = entity.AnimalId,
-                    Name = entity.Name,
-                    Species = entity.Species,
-                    Breed = entity.Breed,
-                    Sex = entity.Sex,
-                    Fixed = entity.Fixed,
-                    HasShots = entity.HasShots,
-                    Age = entity.Age,
-                    Description = entity.Description,
-                    AdoptionPrice = entity.AdoptionPrice,
-                    IsHouseTrained = entity.IsHouseTrained,
-                    IsDeclawed = entity.IsDeclawed,
-                    IsEdible = entity.IsEdible
+                    AnimalId = entity.AnimalId
                 };
             }
         }
@@ -121,7 +95,6 @@ namespace AnimalShelter.Services
                     var entity = db.Posts
                             .Single(e => e.PostId == model.PostId && e.UserId == _userId);
                     // Need property of animals that are editable
-                    entity.ProfileId = model.ProfileId;
                     entity.AnimalId = model.AnimalId;
 
                     return db.SaveChanges() == 1;

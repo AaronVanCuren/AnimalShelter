@@ -8,10 +8,9 @@ namespace AnimalShelter.Models
 {
     public class VaccineRUD
     {
-        public int Id { get; set; }
+        public int VaccineId { get; set; }
         public string Name { get; set; }
         public string CommonName { get; set; }
-        public List<string> ApplicableAnimals { get; set; }
         public string VaccinationSchedule { get; set; }
     }
 }
