@@ -25,7 +25,7 @@ namespace AnimalShelter.Models
 
         public bool Fixed { get; set; }
 
-        public bool HasShots { get; set; }
+        public List<Vaccine> Vaccines { get; set; }
 
         public string Age { get; set; }
 

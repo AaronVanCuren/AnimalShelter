@@ -28,7 +28,6 @@ namespace AnimalShelter.Services
                 var entity = new Adoption()
                 {
                     PostId = model.PostId,
-                    ProfileId = model.ProfileId
                 };
 
                 using (var ctx = new ApplicationDbContext())
@@ -57,8 +56,6 @@ namespace AnimalShelter.Services
                             {
                                 AdoptionId = e.AdoptionId,
                                 PostId = e.PostId,
-                                ProfileId = e.ProfileId,
-
                             });
 
                 return query.ToArray();
@@ -86,7 +83,6 @@ namespace AnimalShelter.Services
                 var entity = ctx.Adoptions
                         .Single(e => e.AdoptionId == model.AdoptionId && e.UserId == _userId);
 
-                entity.ProfileId = model.ProfileId;
                 entity.PostId = model.PostId;
 
                 return ctx.SaveChanges() == 1;
