@@ -19,6 +19,8 @@ namespace AnimalShelter.Testing
         [TestInitialize]
         public void Seed()
         {
+
+            List<Vaccine> vaccines = new List<Vaccine>();
             _animals = new List<Animal>();
             _repo = new AnimalServices(userId);
             Animal testAnimal = new Animal();
@@ -28,7 +30,7 @@ namespace AnimalShelter.Testing
             testAnimal.Breed = "Golden Retriever";
             testAnimal.Description = "Is a test";
             testAnimal.Fixed = true;
-            //testAnimal.Vaccines = "sdfagf";
+            testAnimal.Vaccines = vaccines;
             testAnimal.IsDeclawed = true;
             testAnimal.IsEdible = false;
             testAnimal.IsHouseTrained = true;
@@ -43,6 +45,7 @@ namespace AnimalShelter.Testing
         [TestMethod]
         public void CreateAnimalTest()
         {
+            List<Vaccine> vaccines = new List<Vaccine>();
             AnimalCreate animal = new AnimalCreate();
 
             animal.Name = "Bob";
@@ -50,7 +53,7 @@ namespace AnimalShelter.Testing
             animal.Breed = "Golden";
             animal.Sex = true;
             animal.Fixed = true;
-            //animal.HasShots = true;
+            animal.Vaccines = vaccines;
             animal.Age = "3 months";
             animal.Description = "Test doggo.";
             animal.AdoptionPrice = 150.00m;
@@ -73,6 +76,7 @@ namespace AnimalShelter.Testing
         [TestMethod]
         public void UpdateAnimal()
         {
+            List<Vaccine> vaccines = new List<Vaccine>();
             AnimalRUD animal = new AnimalRUD();
 
             animal.AnimalId = 1;
@@ -81,7 +85,7 @@ namespace AnimalShelter.Testing
             animal.Breed = "Golden Retriever";
             animal.Description = "Is a test";
             animal.Fixed = true;
-            //animal.HasShots = true;
+            animal.Vaccines = vaccines;
             animal.IsDeclawed = true;
             animal.IsEdible = false;
             animal.IsHouseTrained = true;
