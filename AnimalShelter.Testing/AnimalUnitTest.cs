@@ -28,7 +28,7 @@ namespace AnimalShelter.Testing
             testAnimal.Breed = "Golden Retriever";
             testAnimal.Description = "Is a test";
             testAnimal.Fixed = true;
-            testAnimal.HasShots = true;
+            //testAnimal.Vaccines = "sdfagf";
             testAnimal.IsDeclawed = true;
             testAnimal.IsEdible = false;
             testAnimal.IsHouseTrained = true;
@@ -50,7 +50,7 @@ namespace AnimalShelter.Testing
             animal.Breed = "Golden";
             animal.Sex = true;
             animal.Fixed = true;
-            animal.HasShots = true;
+            //animal.HasShots = true;
             animal.Age = "3 months";
             animal.Description = "Test doggo.";
             animal.AdoptionPrice = 150.00m;
@@ -81,7 +81,7 @@ namespace AnimalShelter.Testing
             animal.Breed = "Golden Retriever";
             animal.Description = "Is a test";
             animal.Fixed = true;
-            animal.HasShots = true;
+            //animal.HasShots = true;
             animal.IsDeclawed = true;
             animal.IsEdible = false;
             animal.IsHouseTrained = true;
