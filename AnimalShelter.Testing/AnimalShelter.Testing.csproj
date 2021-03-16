@@ -97,6 +97,10 @@
       <Project>{fa594690-7f7d-4925-b2d3-c7fbb20c2d15}</Project>
       <Name>AnimalShelter.Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AnimalShelter.WebAPI\AnimalShelter.WebAPI.csproj">
+      <Project>{c9c7693c-c97b-4327-a7eb-4d0404d0fe35}</Project>
+      <Name>AnimalShelter.WebAPI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

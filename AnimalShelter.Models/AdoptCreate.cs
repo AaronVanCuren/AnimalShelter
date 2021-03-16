@@ -13,6 +13,5 @@ namespace AnimalShelter.Models
         public int ProfileId { get; set; }
 
         public int PostId { get; set; }
-
     }
 }

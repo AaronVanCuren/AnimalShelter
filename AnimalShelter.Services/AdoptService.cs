@@ -11,26 +11,40 @@ namespace AnimalShelter.Services
     public class AdoptService
     {
         private readonly Guid _userId;
+        private readonly UserType _userType;
 
-        public AdoptService(Guid userId)
+        public AdoptService(Guid userId, UserType userType)
         {
             _userId = userId;
+            _userType = userType;
         }
 
         public bool CreateAdoption(AdoptCreate model)
         {
-            var entity = new Adoption()
+            UserService customerService = new UserService(_userId);
+            var c = customerService.GetUserByType(_userType);
+            if (c.UserType == UserType.customer)
             {
-                PostId = model.PostId,
-                ProfileId = model.ProfileId
-            };
+                var entity = new Adoption()
+                {
+                    PostId = model.PostId,
+                    ProfileId = model.ProfileId
+                };
 
-            using (var ctx = new ApplicationDbContext())
-            {
-                ctx.Adoptions.Add(entity);
-                return ctx.SaveChanges() == 1;
+                using (var ctx = new ApplicationDbContext())
+                {
+                    ctx.Adoptions.Add(entity);
+                    return ctx.SaveChanges() == 1;
+                }
             }
+            else
+            {
+                Console.WriteLine("Would you like to make a customer account?");
+            }
+            return false;
         }
+
+
 
         public IEnumerable<AdoptionRUD> GetAdoptions()
         {
