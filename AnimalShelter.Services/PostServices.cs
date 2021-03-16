@@ -51,6 +51,18 @@ namespace AnimalShelter.Services
                 var query = db.Posts
                         .Where(e => e.UserId == _userId)
                         .Select(
+                        e => new PostRUD
+                        {
+                            PostId = e.PostId,
+                            AnimalId = db.Animals
+                                    .Where(a => a.AnimalId == e.AnimalId)
+                                    .Select(
+                                        a => new AnimalRUD
+                                        {
+                                            AnimalId = a.AnimalId,
+                                            Name = a.Name,
+
+                                        })
                             e => new PostListItem
                             {
                                 PostId = e.PostId,
@@ -67,11 +79,9 @@ namespace AnimalShelter.Services
 
                             });
 
-                return query.ToArray();
+                        }); return query.ToArray();
             }
-
         }
-
 
         public PostRUD GetPostById(int id)
         {
@@ -87,58 +97,58 @@ namespace AnimalShelter.Services
             }
         }
 
-        public bool UpdatePost(PostRUD model)
+    public bool UpdatePost(PostRUD model)
+    {
+        UserService companyType = new UserService(_userId);
+        UserService companyId = new UserService(_userId);
+
+        var type = companyType.GetUserByType(_userType);
+        var id = companyId.GetUserByProfileId(_profileId);
+
+        if (type.UserType == UserType.company && id.ProfileId == _profileId)
         {
-            UserService companyType = new UserService(_userId);
-            UserService companyId = new UserService(_userId);
-
-            var type = companyType.GetUserByType(_userType);
-            var id = companyId.GetUserByProfileId(_profileId);
-
-            if (type.UserType == UserType.company && id.ProfileId == _profileId)
+            using (var db = new ApplicationDbContext())
             {
-                using (var db = new ApplicationDbContext())
-                {
-                    var entity = db.Posts
-                            .Single(e => e.PostId == model.PostId && e.UserId == _userId);
-                    // Need property of animals that are editable
-                    entity.AnimalId = model.AnimalId;
+                var entity = db.Posts
+                        .Single(e => e.PostId == model.PostId && e.UserId == _userId);
+                // Need property of animals that are editable
+                entity.AnimalId = model.AnimalId;
 
-                    return db.SaveChanges() == 1;
-                }
+                return db.SaveChanges() == 1;
             }
-            else
-            {
-                Console.WriteLine("Would you like to make a company account?");
-            }
-            return false;
         }
-
-        public bool DeletePost(int postId)
+        else
         {
-            UserService companyType = new UserService(_userId);
-            UserService companyId = new UserService(_userId);
-
-            var type = companyType.GetUserByType(_userType);
-            var id = companyId.GetUserByProfileId(_profileId);
-
-            if (type.UserType == UserType.company && id.ProfileId == _profileId)
-            {
-                using (var db = new ApplicationDbContext())
-                {
-                    var entity = db.Posts
-                            .Single(e => e.PostId == postId && e.UserId == _userId);
-
-                    db.Posts.Remove(entity);
-
-                    return db.SaveChanges() == 1;
-                }
-            }
-            else
-            {
-                Console.WriteLine("Would you like to make a company account?");
-            }
-            return false;
+            Console.WriteLine("Would you like to make a company account?");
         }
+        return false;
     }
+
+    public bool DeletePost(int postId)
+    {
+        UserService companyType = new UserService(_userId);
+        UserService companyId = new UserService(_userId);
+
+        var type = companyType.GetUserByType(_userType);
+        var id = companyId.GetUserByProfileId(_profileId);
+
+        if (type.UserType == UserType.company && id.ProfileId == _profileId)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                var entity = db.Posts
+                        .Single(e => e.PostId == postId && e.UserId == _userId);
+
+                db.Posts.Remove(entity);
+
+                return db.SaveChanges() == 1;
+            }
+        }
+        else
+        {
+            Console.WriteLine("Would you like to make a company account?");
+        }
+        return false;
+    }
+}
 }
