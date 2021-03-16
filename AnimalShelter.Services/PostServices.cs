@@ -105,7 +105,7 @@ namespace AnimalShelter.Services
         var type = companyType.GetUserByType(_userType);
         var id = companyId.GetUserByProfileId(_profileId);
 
-        if (type.UserType == UserType.company && id.ProfileId == _profileId)
+        if (_userType == UserType.company && id.ProfileId == _profileId)
         {
             using (var db = new ApplicationDbContext())
             {
