@@ -321,7 +321,7 @@ namespace AnimalShelter.WebAPI.Controllers
         }
 
         // POST api/Account/Register
-        [AllowAnonymous]
+        [Authorize]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
         {

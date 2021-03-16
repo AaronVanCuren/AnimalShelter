@@ -12,13 +12,11 @@ namespace AnimalShelter.Services
     {
         private readonly Guid _userId;
         private readonly UserType _userType;
-        private readonly int _profileId;
 
-        public AdoptService(Guid userId, UserType userType, int profileId)
+        public AdoptService(Guid userId, UserType userType)
         {
             _userId = userId;
             _userType = userType;
-            _profileId = profileId;
         }
 
         public bool CreateAdoption(AdoptCreate model)

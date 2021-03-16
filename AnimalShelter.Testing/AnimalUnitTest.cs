@@ -15,7 +15,7 @@ namespace AnimalShelter.Testing
         public static Guid userId = new Guid("b3dad667-e8f6-4078-8f3f-90168337b01f");
         private AnimalServices _repo = new AnimalServices(userId);
         private List<Animal> _animals = new List<Animal>();
-
+        private ApplicationUser user = new ApplicationUser();
         [TestInitialize]
         public void Seed()
         {
@@ -23,6 +23,10 @@ namespace AnimalShelter.Testing
             List<Vaccine> vaccines = new List<Vaccine>();
             _animals = new List<Animal>();
             _repo = new AnimalServices(userId);
+            user = new ApplicationUser();
+            user.ProfileId = 1;
+            
+            
             Animal testAnimal = new Animal();
             testAnimal.AnimalId = 1;
             testAnimal.AdoptionPrice = 100m;
@@ -39,6 +43,7 @@ namespace AnimalShelter.Testing
             testAnimal.Species = SpeciesType.Dog;
 
             _animals.Add(testAnimal);
+
 
         }
 
