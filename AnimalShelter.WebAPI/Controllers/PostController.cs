@@ -2,10 +2,6 @@
 using AnimalShelter.Models;
 using AnimalShelter.Services;
 using Microsoft.AspNet.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Http;
 
 namespace AnimalShelter.WebAPI.Controllers
@@ -16,9 +12,9 @@ namespace AnimalShelter.WebAPI.Controllers
         private PostServices CreatePostServices()
         {
             var userId = User.Identity.GetUserId();
-            ApplicationUserListItem user = new UserService(userId).GetUserByType(UserType.company);
-
-            var postService = new PostServices(userId, user.UserType);
+            ApplicationUser user = new ApplicationUser();
+            ApplicationUserListItem userType = new UserService(userId, user.UserType).GetUserByType();
+            var postService = new PostServices(userId, userType.UserType);
             return postService;
         }
 

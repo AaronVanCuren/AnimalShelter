@@ -2,11 +2,6 @@
 using AnimalShelter.Models;
 using AnimalShelter.Services;
 using Microsoft.AspNet.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace AnimalShelter.WebAPI.Controllers
@@ -16,7 +11,8 @@ namespace AnimalShelter.WebAPI.Controllers
         private AdoptService CreateAdoptionServices()
         {
             var userId = (User.Identity.GetUserId());
-            ApplicationUserListItem user = new UserService(userId).GetUserByType(UserType.customer);
+            ApplicationUser user = new ApplicationUser();
+            ApplicationUserListItem userType = new UserService(userId, user.UserType).GetUserByType();
             var postService = new AdoptService(userId, user.UserType);
             return postService;
         }
