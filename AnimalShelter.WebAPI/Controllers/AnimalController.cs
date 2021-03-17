@@ -15,7 +15,7 @@ namespace AnimalShelter.WebAPI.Controllers
         
         private AnimalServices CreateAnimalServices()
         {
-            var user = Guid.Parse(User.Identity.GetUserId());
+            var user = User.Identity.GetUserId();
             var animalService = new AnimalServices(user);
             return animalService;
         }

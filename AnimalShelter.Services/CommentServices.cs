@@ -50,6 +50,7 @@ namespace AnimalShelter.Services
                                 {
                                     PostId = e.PostId,
                                     Content = e.Content,
+                                    CommentId = e.CommentId
                                 }
                         );
 
