@@ -9,9 +9,9 @@ namespace AnimalShelter.Services
 {
     public class ReplyService
     {
-        private readonly Guid _userId;
+        private readonly string _userId;
 
-        public ReplyService(Guid userId)
+        public ReplyService(string userId)
         {
             _userId = userId;
         }

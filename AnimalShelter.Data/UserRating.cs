@@ -33,8 +33,8 @@ namespace AnimalShelter.Data
         }
 
         [Required]
-        public int ProfileId { get; set; }
-        [ForeignKey(nameof(ProfileId))]
+        public string UserId { get; set; }
+        [ForeignKey(nameof(UserId))]
         public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }

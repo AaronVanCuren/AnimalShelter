@@ -10,10 +10,10 @@ namespace AnimalShelter.Services
 {
     public class UserRatingService
     {
-        private readonly Guid _userId;
+        private readonly string _userId;
         private readonly UserType _userType;
 
-        public UserRatingService(Guid userId, UserType userType)
+        public UserRatingService(string userId, UserType userType)
         {
             _userId = userId;
             _userType = userType;
@@ -27,7 +27,6 @@ namespace AnimalShelter.Services
 
                 var entity = new UserRating()
                 {
-                    ProfileId = model.ProfileId,
                     AdoptingProcessScore = model.AdoptingProcessScore,
                     FriendlinessScore = model.FriendlinessScore
                 };
@@ -53,7 +52,6 @@ namespace AnimalShelter.Services
                             e => new UserRatingListItem
                             {
                                 RatingId = e.RatingId,
-                                ProfileId = e.ProfileId,
                                 CompanyName = e.ApplicationUser.CompanyName,
                                 AverageScore = e.AverageScore
                             });
@@ -62,17 +60,16 @@ namespace AnimalShelter.Services
             }
         }
 
-        public UserRatingListItem GetUserRatingById(int id)
+        public UserRatingListItem GetUserRatingById(string id)
         {
             using (var db = new ApplicationDbContext())
             {
                 var entity = db.Ratings
-                        .Single(e => e.ProfileId == id);
+                        .Single(e => e.UserId == id);
                 return
                     new UserRatingListItem
                     {
                         RatingId = entity.RatingId,
-                        ProfileId = entity.ProfileId,
                         CompanyName = entity.ApplicationUser.CompanyName,
                         AverageScore = entity.AverageScore
                     };
