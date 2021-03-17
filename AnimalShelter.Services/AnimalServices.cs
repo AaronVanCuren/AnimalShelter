@@ -121,12 +121,14 @@ namespace AnimalShelter.Services
         {
             using (var db = new ApplicationDbContext())
             {
+                int initialCount = db.Animals.Count();
                 var entity = db.Animals
                         .Single(e => e.AnimalId == animalId);
 
                 db.Animals.Remove(entity);
-
-                return db.SaveChanges() == 1;
+                db.SaveChanges();
+                bool wasDeleted = initialCount > db.Animals.Count();
+                return wasDeleted;
             }
         }
     }

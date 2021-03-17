@@ -2,10 +2,7 @@ using AnimalShelter.Data;
 using AnimalShelter.Models;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AnimalShelter.Services
 {
@@ -40,7 +37,6 @@ namespace AnimalShelter.Services
                 Console.WriteLine("Would you like to make a company account?");
             }
             return false;
-
         }
 
         public IEnumerable<PostListItem> GetPosts()

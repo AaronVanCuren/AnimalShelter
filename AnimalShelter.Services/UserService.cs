@@ -1,20 +1,19 @@
 ﻿using AnimalShelter.Data;
 using AnimalShelter.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AnimalShelter.Services
 {
     public class UserService
     {
         private readonly string _userId;
+        private readonly UserType _userType;
 
-        public UserService(string userId)
+        public UserService(string userId, UserType userType)
         {
             _userId = userId;
+            _userType = userType;
         }
 
         public IEnumerable<ApplicationUserListItem> GetCustomers()
@@ -25,8 +24,9 @@ namespace AnimalShelter.Services
                     .Select(e => new ApplicationUserListItem
                     {
                         FullName = e.FullName,
+                        Email = e.Email,
+                        PhoneNumber = e.PhoneNumber,
                         Address = e.Address,
-                        PhoneNumber = e.PhoneNumber
                     });
 
                 return query.ToArray();
@@ -40,11 +40,12 @@ namespace AnimalShelter.Services
                 var query = db.Users.Where(e => e.UserType == UserType.company)
                     .Select(e => new ApplicationUserListItem
                     {
+
                         CompanyName = e.CompanyName,
-                        Address = e.Address,
+                        Email = e.Email,
                         PhoneNumber = e.PhoneNumber,
-                        Posts = e.Posts,
-                        Ratings = e.Ratings
+                        Address = e.Address,
+                        Posts = e.Posts,                        
                     });
 
                 return query.ToArray();
@@ -59,40 +60,64 @@ namespace AnimalShelter.Services
                     .Select(e => new ApplicationUserListItem
                     {
                         FullName = e.FullName,
-                        Address = e.Address,
+                        Email = e.Email,
                         PhoneNumber = e.PhoneNumber,
-                        Vaccines = e.Vaccines
+                        Address = e.Address,
+                        Vaccines = e.Vaccines,
                     });
 
                 return query.ToArray();
             }
         }
 
-        public ApplicationUser GetUserByUserName(string userName)
+        public ApplicationUserListItem GetUserByEmail(string email)
         {
             using (var db = new ApplicationDbContext())
             {
                 var entity = db.Users
-                        .Single(e => e.UserName == userName && e.Id == _userId);
-                return new ApplicationUser
+                        .Single(e => e.Email == email);
+                if (_userType == UserType.customer)
                 {
-                    UserName = entity.UserName,
-                    FullName = entity.FullName,
-                    CompanyName = entity.CompanyName,
-                    PhoneNumber = entity.PhoneNumber,
-                    Address = entity.Address,
-                    Ratings = entity.Ratings,
-                    Vaccines = entity.Vaccines
-                };
+                    return new ApplicationUserListItem
+                    {
+                        Id = entity.Id,
+                        UserName = entity.UserName,
+                        FullName = entity.FullName,
+                        PhoneNumber = entity.PhoneNumber,
+                        Address = entity.Address,
+                    };
+                }
+                else if (_userType == UserType.company)
+                {
+                    return new ApplicationUserListItem
+                    {
+                        UserName = entity.UserName,
+                        CompanyName = entity.CompanyName,
+                        PhoneNumber = entity.PhoneNumber,
+                        Address = entity.Address,
+                    };
+                }
+                else if (_userType == UserType.vet)
+                {
+                    return new ApplicationUserListItem
+                    {
+                        UserName = entity.UserName,
+                        FullName = entity.FullName,
+                        PhoneNumber = entity.PhoneNumber,
+                        Address = entity.Address,
+                        Vaccines = entity.Vaccines
+                    };
+                }
+                return null;
             }
         }
 
-        public ApplicationUserListItem GetUserByType(UserType userType)
+        public ApplicationUserListItem GetUserByType()
         {
             using (var db = new ApplicationDbContext())
             {
                 var entity = db.Users
-                        .Single(e => e.UserType == userType && e.Id == _userId);
+                        .Single(e => e.Id == _userId);
                 return new ApplicationUserListItem
                 {
                     UserType = entity.UserType
@@ -100,19 +125,42 @@ namespace AnimalShelter.Services
             }
         }
 
-        public bool UpdateUser(RegisterBindingModel model)
+        public bool UpdateUser(UserUpdate model)
         {
             using (var db = new ApplicationDbContext())
             {
                 var entity = db.Users
-                        .Single(e => e.Email == model.Email && e.Id == _userId);
-
-                entity.UserName = model.UserName;
-                entity.Email = model.Email;
-                entity.FullName = model.FullName;
-                entity.CompanyName = model.CompanyName;
-                entity.PhoneNumber = model.PhoneNumber;
-                entity.Address = model.Address;
+                        .Single(e => e.Id == model.Id);
+                if (_userType == UserType.customer)
+                {
+                    {
+                        entity.UserName = model.UserName;
+                        entity.FullName = model.FullName;
+                        entity.Email = model.Email;
+                        entity.PhoneNumber = model.PhoneNumber;
+                        entity.Address = model.Address;
+                    };
+                }
+                else if (_userType == UserType.company)
+                {
+                    {
+                        entity.UserName = model.UserName;
+                        entity.CompanyName = model.CompanyName;
+                        entity.Email = model.Email;
+                        entity.PhoneNumber = model.PhoneNumber;
+                        entity.Address = model.Address;
+                    };
+                }
+                else if (_userType == UserType.vet)
+                {
+                    {
+                        entity.UserName = model.UserName;
+                        entity.FullName = model.FullName;
+                        entity.Email = model.Email;
+                        entity.PhoneNumber = model.PhoneNumber;
+                        entity.Address = model.Address;
+                    };
+                }
 
                 return db.SaveChanges() == 1;
             }
@@ -123,7 +171,7 @@ namespace AnimalShelter.Services
             using (var db = new ApplicationDbContext())
             {
                 var entity = db.Users
-                        .Single(e => e.Email == email && e.Id == _userId);
+                        .Single(e => e.Email == email);
 
                 db.Users.Remove(entity);
 
