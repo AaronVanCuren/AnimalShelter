@@ -25,6 +25,7 @@ namespace AnimalShelter.Services
             {
                 var entity = new Post()
                 {
+                    UserId = _userId,
                     AnimalId = model.AnimalId
                 };
 
@@ -39,7 +40,6 @@ namespace AnimalShelter.Services
                 Console.WriteLine("Would you like to make a company account?");
             }
             return false;
-
         }
 
         public IEnumerable<PostListItem> GetPosts()
