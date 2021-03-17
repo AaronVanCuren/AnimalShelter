@@ -11,7 +11,7 @@ namespace AnimalShelter.Data
     public class Adoption
     {
         [Required]
-        public Guid UserId { get; set; }
+        public string UserId { get; set; }
 
         [Key]
         public int AdoptionId { get; set; }

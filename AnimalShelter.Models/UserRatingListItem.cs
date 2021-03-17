@@ -11,7 +11,6 @@ namespace AnimalShelter.Models
     {
         public int RatingId { get; set; }
 
-        public int ProfileId { get; set; }
 
         public string CompanyName { get; set; }
 

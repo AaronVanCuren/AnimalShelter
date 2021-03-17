@@ -10,10 +10,10 @@ namespace AnimalShelter.Services
 {
     public class AdoptService
     {
-        private readonly Guid _userId;
+        private readonly string _userId;
         private readonly UserType _userType;
 
-        public AdoptService(Guid userId, UserType userType)
+        public AdoptService(string userId, UserType userType)
         {
             _userId = userId;
             _userType = userType;

@@ -10,41 +10,39 @@ namespace AnimalShelter.Services
 {
     public class UserService
     {
-        private readonly Guid _userId;
+        private readonly string _userId;
 
-        public UserService(Guid userId)
+        public UserService(string userId)
         {
             _userId = userId;
         }
 
-        public IEnumerable<ApplicationUser> GetCustomers()
+        public IEnumerable<ApplicationUserListItem> GetCustomers()
         {
             using (var db = new ApplicationDbContext())
             {
                 var query = db.Users.Where(e => e.UserType == UserType.customer)
-                    .Select(e => new ApplicationUser
+                    .Select(e => new ApplicationUserListItem
                     {
-                        ProfileId = e.ProfileId,
-                        UserName = e.UserName,
                         FullName = e.FullName,
-                        Address = e.Address
+                        Address = e.Address,
+                        PhoneNumber = e.PhoneNumber
                     });
 
                 return query.ToArray();
             }
         }
 
-        public IEnumerable<ApplicationUser> GetCompanies()
+        public IEnumerable<ApplicationUserListItem> GetCompanies()
         {
             using (var db = new ApplicationDbContext())
             {
                 var query = db.Users.Where(e => e.UserType == UserType.company)
-                    .Select(e => new ApplicationUser
+                    .Select(e => new ApplicationUserListItem
                     {
-                        ProfileId = e.ProfileId,
-                        UserName = e.UserName,
                         CompanyName = e.CompanyName,
                         Address = e.Address,
+                        PhoneNumber = e.PhoneNumber,
                         Posts = e.Posts,
                         Ratings = e.Ratings
                     });
@@ -53,17 +51,16 @@ namespace AnimalShelter.Services
             }
         }
 
-        public IEnumerable<ApplicationUser> GetVets()
+        public IEnumerable<ApplicationUserListItem> GetVets()
         {
             using (var db = new ApplicationDbContext())
             {
                 var query = db.Users.Where(e => e.UserType == UserType.vet)
-                    .Select(e => new ApplicationUser
+                    .Select(e => new ApplicationUserListItem
                     {
-                        ProfileId = e.ProfileId,
-                        UserName = e.UserName,
                         FullName = e.FullName,
                         Address = e.Address,
+                        PhoneNumber = e.PhoneNumber,
                         Vaccines = e.Vaccines
                     });
 
@@ -76,10 +73,9 @@ namespace AnimalShelter.Services
             using (var db = new ApplicationDbContext())
             {
                 var entity = db.Users
-                        .Single(e => e.UserName == userName && e.UserId == _userId);
+                        .Single(e => e.UserName == userName && e.Id == _userId);
                 return new ApplicationUser
                 {
-                    ProfileId = entity.ProfileId,
                     UserName = entity.UserName,
                     FullName = entity.FullName,
                     CompanyName = entity.CompanyName,
@@ -91,26 +87,13 @@ namespace AnimalShelter.Services
             }
         }
 
-        public ApplicationUser GetUserByProfileId(int profileId)
+        public ApplicationUserListItem GetUserByType(UserType userType)
         {
             using (var db = new ApplicationDbContext())
             {
                 var entity = db.Users
-                        .Single(e => e.ProfileId == profileId && e.UserId == _userId);
-                return new ApplicationUser
-                {
-                    ProfileId = entity.ProfileId
-                };
-            }
-        }
-
-        public ApplicationUser GetUserByType(UserType userType)
-        {
-            using (var db = new ApplicationDbContext())
-            {
-                var entity = db.Users
-                        .Single(e => e.UserType == userType && e.UserId == _userId);
-                return new ApplicationUser
+                        .Single(e => e.UserType == userType && e.Id == _userId);
+                return new ApplicationUserListItem
                 {
                     UserType = entity.UserType
                 };
@@ -122,7 +105,7 @@ namespace AnimalShelter.Services
             using (var db = new ApplicationDbContext())
             {
                 var entity = db.Users
-                        .Single(e => e.Email == model.Email && e.UserId == _userId);
+                        .Single(e => e.Email == model.Email && e.Id == _userId);
 
                 entity.UserName = model.UserName;
                 entity.Email = model.Email;
@@ -140,7 +123,7 @@ namespace AnimalShelter.Services
             using (var db = new ApplicationDbContext())
             {
                 var entity = db.Users
-                        .Single(e => e.Email == email && e.UserId == _userId);
+                        .Single(e => e.Email == email && e.Id == _userId);
 
                 db.Users.Remove(entity);
 

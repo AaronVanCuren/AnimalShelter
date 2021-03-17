@@ -11,7 +11,7 @@ namespace AnimalShelter.Data
     public class Post
     {
         [Required]
-        public Guid UserId { get; set; }
+        public string UserId { get; set; }
 
         [Key]
         public int PostId { get; set; }

@@ -13,7 +13,7 @@ namespace AnimalShelter.WebAPI.Controllers
     {
         private UserService CreateUserService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
+            var userId = User.Identity.GetUserId();
             var profileService = new UserService(userId);
             return profileService;
         }

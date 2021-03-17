@@ -15,8 +15,8 @@ namespace AnimalShelter.WebAPI.Controllers
     {
         private UserRatingService CreateUserRatingService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            ApplicationUser user = new UserService(userId).GetUserByType(UserType.company);
+            var userId = User.Identity.GetUserId();
+            ApplicationUserListItem user = new UserService(userId).GetUserByType(UserType.company);
             var userRatingService = new UserRatingService(userId, user.UserType);
             return userRatingService;
         }
@@ -41,7 +41,7 @@ namespace AnimalShelter.WebAPI.Controllers
             return Ok();
         }
 
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult Get(string id)
         {
             UserRatingService companyRatingService = CreateUserRatingService();
             var rating = companyRatingService.GetUserRatingById(id);

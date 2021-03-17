@@ -1,4 +1,4 @@
-﻿using AnimalShelter.Data;
+﻿/*using AnimalShelter.Data;
 using AnimalShelter.Models;
 using AnimalShelter.Services;
 using AnimalShelter.WebAPI;
@@ -11,7 +11,6 @@ namespace AnimalShelter.Testing
     public class ApplicationUserTests
     {
         private static Guid _userId = new Guid("b3dad667-e8f6-4078-8f3f-90168337b01f");
-        private readonly UserService _repo;
         private readonly ApplicationDbContext _db = new ApplicationDbContext();
         private RegisterBindingModel _customer;
         private RegisterBindingModel _company;
@@ -126,3 +125,4 @@ namespace AnimalShelter.Testing
         }
     }
 }
+*/
