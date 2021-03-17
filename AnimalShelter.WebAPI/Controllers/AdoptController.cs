@@ -15,8 +15,8 @@ namespace AnimalShelter.WebAPI.Controllers
     {
         private AdoptService CreateAdoptionServices()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            ApplicationUser user = new UserService(userId).GetUserByType(UserType.customer);
+            var userId = (User.Identity.GetUserId());
+            ApplicationUserListItem user = new UserService(userId).GetUserByType(UserType.customer);
             var postService = new AdoptService(userId, user.UserType);
             return postService;
         }

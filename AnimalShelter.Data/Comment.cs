@@ -17,7 +17,7 @@ namespace AnimalShelter.Data
         public string Content { get; set; }
 
         [Required]
-        public Guid Author { get; set; }
+        public string Author { get; set; }
 
         public virtual List<Reply> Replies { get; set; }
 

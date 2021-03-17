@@ -13,7 +13,7 @@ namespace AnimalShelter.WebAPI.Controllers
     {
         private CommentService CreateCommentService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
+            var userId = User.Identity.GetUserId();
             var commentService = new CommentService(userId);
             return commentService;
         }
