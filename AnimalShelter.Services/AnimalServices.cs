@@ -10,9 +10,9 @@ namespace AnimalShelter.Services
 {
     public class AnimalServices
     {
-        private readonly Guid _userId;
+        private readonly string _userId;
 
-        public AnimalServices(Guid userId)
+        public AnimalServices(string userId)
         {
             _userId = userId;
         }
@@ -76,6 +76,7 @@ namespace AnimalShelter.Services
                         .Single(e => e.AnimalId == id);
                 return new AnimalRUD
                 {
+
                     AnimalId = entity.AnimalId,
                     Name = entity.Name,
                     Species = entity.Species,

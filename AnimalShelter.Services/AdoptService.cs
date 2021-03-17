@@ -25,6 +25,7 @@ namespace AnimalShelter.Services
             {
                 var entity = new Adoption()
                 {
+                    UserId = _userId,
                     PostId = model.PostId,
                 };
 
@@ -85,18 +86,43 @@ namespace AnimalShelter.Services
             }
         }
 
-        public AdoptionRUD GetAdoptionById(int id)
+        public AdoptionListItem GetAdoptionById(int id)
         {
             using (var db = new ApplicationDbContext())
             {
                 var entity = db.Adoptions
-                        .Single(e => e.AdoptionId == id && e.UserId == _userId);
-                return
-                    new AdoptionRUD
-                    {
-                        AdoptionId = entity.AdoptionId,
-                        PostId = entity.PostId
-                    };
+                        .Single(e => e.AdoptionId == id);
+                return new AdoptionListItem
+                {
+                    AdoptionId = entity.AdoptionId,
+                    PostId = db.Posts
+                    .Where(a => a.PostId == entity.PostId)
+                    .Select(
+                       a => new PostListItem
+                       {
+                           PostId = a.PostId,
+                           AnimalId = db.Animals
+                           .Where(b => b.AnimalId == a.AnimalId)
+                           .Select(
+                               b => new AnimalRUD
+                               {
+                                   AnimalId = b.AnimalId,
+                                   Name = b.Name,
+                                   Species = b.Species,
+                                   Breed = b.Breed,
+                                   Sex = b.Sex,
+                                   Fixed = b.Fixed,
+                                   Vaccines = b.Vaccines,
+                                   Age = b.Age,
+                                   Description = b.Description,
+                                   AdoptionPrice = b.AdoptionPrice,
+                                   IsHouseTrained = b.IsHouseTrained,
+                                   IsDeclawed = b.IsDeclawed,
+                                   IsEdible = b.IsEdible,
+                               })
+
+                       })
+                };
             }
         }
 

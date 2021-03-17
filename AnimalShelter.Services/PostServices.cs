@@ -25,6 +25,7 @@ namespace AnimalShelter.Services
             {
                 var entity = new Post()
                 {
+                    UserId = _userId,
                     AnimalId = model.AnimalId
                 };
 
