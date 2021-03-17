@@ -321,7 +321,7 @@ namespace AnimalShelter.WebAPI.Controllers
         }
 
         // POST api/Account/Register
-        [Authorize]
+        [AllowAnonymous]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
         {
@@ -350,9 +350,9 @@ namespace AnimalShelter.WebAPI.Controllers
 
                 //using (var db = new ApplicationDbContext())
                 //{
-                //    db.Users.Add(user);
-                //    db.SaveChanges();
-                //    return Ok();
+                //   db.Users.Add(user);
+                //   db.SaveChanges();
+                //   return Ok();
                 //}
                 return Ok();
             }
@@ -376,9 +376,9 @@ namespace AnimalShelter.WebAPI.Controllers
 
                 //using (var db = new ApplicationDbContext())
                 //{
-                //    db.Users.Add(user);
-                //    db.SaveChanges();
-                //    return Ok();
+                //   db.Users.Add(user);
+                //   db.SaveChanges();
+                //   return Ok();
                 //}
                 return Ok();
             }
@@ -387,7 +387,6 @@ namespace AnimalShelter.WebAPI.Controllers
                 return InternalServerError();
             }
         }
-
         // POST api/Account/RegisterExternal
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
