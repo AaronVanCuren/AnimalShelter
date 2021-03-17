@@ -1,10 +1,7 @@
-﻿using AnimalShelter.Models;
+﻿using AnimalShelter.Data;
+using AnimalShelter.Models;
 using AnimalShelter.Services;
 using Microsoft.AspNet.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Http;
 
 namespace AnimalShelter.WebAPI.Controllers
@@ -14,42 +11,48 @@ namespace AnimalShelter.WebAPI.Controllers
         private UserService CreateUserService()
         {
             var userId = User.Identity.GetUserId();
-            var profileService = new UserService(userId);
-            return profileService;
+            ApplicationUser user = new ApplicationUser();
+            var userService = new UserService(userId, user.UserType);
+            return userService;
         }
 
         [HttpGet]
+        [Route("api/User/Customers")]
         public IHttpActionResult GetCustomers()
         {
             UserService userService = CreateUserService();
-            var profiles = userService.GetCustomers();
-            return Ok(profiles);
+            var user = userService.GetCustomers();
+            return Ok(user);
         }
 
         [HttpGet]
+        [Route("api/User/Companies")]
         public IHttpActionResult GetCompanies()
         {
             UserService userService = CreateUserService();
-            var profiles = userService.GetCompanies();
-            return Ok(profiles);
+            var user = userService.GetCompanies();
+            return Ok(user);
         }
 
         [HttpGet]
+        [Route("api/User/Vets")]
         public IHttpActionResult GetVets()
         {
             UserService userService = CreateUserService();
-            var profiles = userService.GetVets();
-            return Ok(profiles);
+            var user = userService.GetVets();
+            return Ok(user);
         }
 
-        public IHttpActionResult Get(string userName)
+        [HttpGet]
+        [Route("api/UserByEmail")]
+        public IHttpActionResult Get(string email)
         {
-            UserService profileService = CreateUserService();
-            var profile = profileService.GetUserByUserName(userName);
-            return Ok(profile);
+            UserService userService = CreateUserService();
+            var userEmail = userService.GetUserByEmail(email);
+            return Ok(userEmail);
         }
 
-        public IHttpActionResult Put(RegisterBindingModel user)
+        public IHttpActionResult Put(UserUpdate user)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
