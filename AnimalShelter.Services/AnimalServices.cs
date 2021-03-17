@@ -76,6 +76,7 @@ namespace AnimalShelter.Services
                         .Single(e => e.AnimalId == id);
                 return new AnimalRUD
                 {
+
                     AnimalId = entity.AnimalId,
                     Name = entity.Name,
                     Species = entity.Species,

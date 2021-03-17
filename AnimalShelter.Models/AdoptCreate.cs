@@ -10,6 +10,7 @@ namespace AnimalShelter.Models
 {
     public class AdoptCreate
     {
+        //[Display(Post = "User type")]
         public int PostId { get; set; }
     }
 }

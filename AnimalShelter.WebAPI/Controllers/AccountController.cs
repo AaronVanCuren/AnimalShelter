@@ -374,7 +374,6 @@ namespace AnimalShelter.WebAPI.Controllers
                 return InternalServerError();
             }
         }
-
         // POST api/Account/RegisterExternal
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
