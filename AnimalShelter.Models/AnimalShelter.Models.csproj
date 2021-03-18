@@ -111,6 +111,7 @@
     <Compile Include="ApplicationUserListItem.cs" />
     <Compile Include="PostListItem.cs" />
     <Compile Include="UserRatingCreate.cs" />
+    <Compile Include="UserRatingDetail.cs" />
     <Compile Include="UserRatingListItem.cs" />
     <Compile Include="CommentCreate.cs" />
     <Compile Include="CommentRUD.cs" />

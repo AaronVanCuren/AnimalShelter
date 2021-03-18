@@ -34,7 +34,7 @@ namespace AnimalShelter.Data
 
         public virtual List<UserRating> Ratings { get; set; } = new List<UserRating>();
 
-        public double AverageRating
+        public double TotalAverageRating
         {
             get
             {
