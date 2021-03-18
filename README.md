@@ -19,7 +19,7 @@ We would like various shelters to post available animals that are ready to be ad
 This is scaffolding for utilizing the Web Api. You might still need to change certain values based on your own databases made from this program
 
 1. Clone Solution
-2. Upon opening solution find the **Solution Items** folder near the top of the Solution
+2. Upon opening solution find the **Postman Tests** folder in the file location for the solution
 3. Included is the AnimalShelter.postman_collection.json file
 4. In Postman import a new Workspace
 5. Drag and drop AnimalShelter.postman_collection.json
