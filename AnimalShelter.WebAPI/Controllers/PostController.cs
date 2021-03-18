@@ -1,10 +1,7 @@
-﻿using AnimalShelter.Models;
+﻿using AnimalShelter.Data;
+using AnimalShelter.Models;
 using AnimalShelter.Services;
 using Microsoft.AspNet.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Http;
 
 namespace AnimalShelter.WebAPI.Controllers
@@ -14,7 +11,7 @@ namespace AnimalShelter.WebAPI.Controllers
     {
         private PostServices CreatePostServices()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
+            var userId = User.Identity.GetUserId();
             var postService = new PostServices(userId);
             return postService;
         }

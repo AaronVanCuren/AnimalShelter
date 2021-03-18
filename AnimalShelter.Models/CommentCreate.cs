@@ -18,8 +18,8 @@ namespace AnimalShelter.Services
         public string PostId { get; set; }
 
         [Required]
-        public Guid Author { get; set; }
-
+        public string Author { get; set; }
+        
         public List<SelectListItem> Posts { get; set; }
     }
 }

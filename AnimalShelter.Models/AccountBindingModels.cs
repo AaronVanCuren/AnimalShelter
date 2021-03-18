@@ -1,8 +1,8 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using AnimalShelter.Data;
 using Newtonsoft.Json;
 
-namespace AnimalShelter.WebAPI.Models
+namespace AnimalShelter.Models
 {
     // Models used as parameters to AccountController actions.
 
@@ -35,8 +35,34 @@ namespace AnimalShelter.WebAPI.Models
     public class RegisterBindingModel
     {
         [Required]
+        [Display(Name = "User type")]
+        public UserType UserType { get; set; }
+
+        [StringLength(100, ErrorMessage = "The {0} must be less than {1} characters.")]
+        [Display(Name = "Full Name (if applicable)")]
+        public string FullName { get; set; }
+
+        [StringLength(100, ErrorMessage = "The {0} must be less than {1} characters")]
+        [Display(Name = "Company Name (if applicable)")]
+        public string CompanyName { get; set; }
+
+        [Required]
+        [StringLength(20, ErrorMessage = "The {0} must be less than {1} characters at least {2} characters long.", MinimumLength = 6)]
+        [Display(Name = "Username")]
+        public string UserName { get; set; }
+
+        [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required]
+        [StringLength(12, ErrorMessage = "Please enter a phone number using the following format: XXX-XXX-XXXX.", MinimumLength = 12)]
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        [Display(Name = "Address")]
+        public string Address { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]

@@ -21,10 +21,9 @@ namespace AnimalShelter.Services
         {
             var entity = new Vaccine()
             {
-                Id = vaccine.Id,
+                VaccineId = vaccine.VaccineId,
                 Name = vaccine.Name,
                 CommonName = vaccine.CommonName,
-                ApplicableAnimals = vaccine.ApplicableAnimals,
                 VaccinationSchedule = vaccine.VaccinationSchedule
             };
             using (var ctx = new ApplicationDbContext())
@@ -43,7 +42,7 @@ namespace AnimalShelter.Services
                         .Select(
                             e => new VaccineRUD
                             {
-                                Id = e.Id,
+                                VaccineId = e.VaccineId,
                                 CommonName = e.CommonName
                             });
 
@@ -55,11 +54,10 @@ namespace AnimalShelter.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = ctx.Vaccines
-                        .Single(e => e.Id == model.Id);
+                        .Single(e => e.VaccineId == model.VaccineId);
 
                 entity.Name = model.Name;
                 entity.CommonName = model.CommonName;
-                entity.ApplicableAnimals = model.ApplicableAnimals;
                 entity.VaccinationSchedule = model.VaccinationSchedule;
 
                 return ctx.SaveChanges() == 1;
@@ -70,7 +68,7 @@ namespace AnimalShelter.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = ctx.Vaccines
-                        .Single(e => e.Id == id);
+                        .Single(e => e.VaccineId == id);
 
                 ctx.Vaccines.Remove(entity);
 

@@ -1,4 +1,7 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
@@ -9,9 +12,41 @@ using Microsoft.AspNet.Identity.Owin;
 
 namespace AnimalShelter.Data
 {
+    public enum UserType { customer, company, vet }
+
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+
+        public UserType UserType { get; set; }
+
+        public string FullName { get; set; }
+
+        public string CompanyName { get; set; }
+
+        public string Address { get; set; }
+
+        public virtual List<Vaccine> Vaccines { get; set; }
+
+        public virtual List<Animal> Animals { get; set; }
+
+        public virtual List<Post> Posts { get; set; }
+
+        public virtual List<UserRating> Ratings { get; set; } = new List<UserRating>();
+
+        public double TotalAverageRating
+        {
+            get
+            {
+                double TotalAverageRating = 0;
+                foreach (var rating in Ratings)
+                {
+                    TotalAverageRating += rating.AverageRating;
+                }
+                return (Ratings.Count > 0) ? TotalAverageRating / Ratings.Count : 0;
+            }
+        }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -33,15 +68,14 @@ namespace AnimalShelter.Data
             return new ApplicationDbContext();
         }
 
-        public DbSet<CompanyRating> Ratings { get; set; }
-        public DbSet<Vaccine> Vaccines { get; set; }
-        public DbSet<Post> Posts { get; set; }
-        public DbSet<Comment> Comments { get; set; }
-        public DbSet<Reply> Replies { get; set; }
+        //public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<Adoption> Adoptions { get; set; }
         public DbSet<Animal> Animals { get; set; }
-        public DbSet<Profile> Profiles { get; set; }
-        public DbSet<Company> Companies { get; set; }
-        public DbSet<Adoption> Adoptions { get; set; } 
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<UserRating> Ratings { get; set; }
+        public DbSet<Reply> Replies { get; set; }
+        public DbSet<Vaccine> Vaccines { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

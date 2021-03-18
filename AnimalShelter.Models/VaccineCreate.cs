@@ -10,11 +10,10 @@ namespace AnimalShelter.Models
     public class VaccineCreate
     {
         [Key]
-        public int Id { get; set; }
+        public int VaccineId { get; set; }
         public string Name { get; set; }
         [Required]
         public string CommonName { get; set; }
-        public List<string> ApplicableAnimals { get; set; }
         [Required]
         public string VaccinationSchedule { get; set; }
     }

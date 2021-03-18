@@ -7,14 +7,12 @@ using System.Threading.Tasks;
 
 namespace AnimalShelter.Models
 {
-    public class CompanyRatingListItem
+    public class UserRatingListItem
     {
         public int RatingId { get; set; }
 
-        public int CompanyId { get; set; }
-
         public string CompanyName { get; set; }
 
-        public double AverageScore { get; set; }
+        public double AverageRating { get; set; }
     }
 }

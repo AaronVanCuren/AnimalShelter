@@ -10,9 +10,9 @@ namespace AnimalShelter.Services
 {
     public class AnimalServices
     {
-        private readonly Guid _userId;
+        private readonly string _userId;
 
-        public AnimalServices(Guid userId)
+        public AnimalServices(string userId)
         {
             _userId = userId;
         }
@@ -26,7 +26,7 @@ namespace AnimalShelter.Services
                 Breed = animal.Breed,
                 Sex = animal.Sex,
                 Fixed = animal.Fixed,
-                HasShots = animal.HasShots,
+                Vaccines = animal.Vaccines,
                 Age = animal.Age,
                 Description = animal.Description,
                 AdoptionPrice = animal.AdoptionPrice,
@@ -41,7 +41,7 @@ namespace AnimalShelter.Services
             }
         }
 
-        public IEnumerable<AnimalRUD> GetAnimals()
+        public List<AnimalRUD> GetAnimals()
         {
             using (var db = new ApplicationDbContext())
             {
@@ -55,7 +55,7 @@ namespace AnimalShelter.Services
                                 Breed = e.Breed,
                                 Sex = e.Sex,
                                 Fixed = e.Fixed,
-                                HasShots = e.HasShots,
+                                Vaccines = e.Vaccines,
                                 Age = e.Age,
                                 Description = e.Description,
                                 AdoptionPrice = e.AdoptionPrice,
@@ -64,7 +64,7 @@ namespace AnimalShelter.Services
                                 IsEdible = e.IsEdible
                             });
 
-                return query.ToArray();
+                return query.ToList();
             }
         }
 
@@ -76,13 +76,14 @@ namespace AnimalShelter.Services
                         .Single(e => e.AnimalId == id);
                 return new AnimalRUD
                 {
+
                     AnimalId = entity.AnimalId,
                     Name = entity.Name,
                     Species = entity.Species,
                     Breed = entity.Breed,
                     Sex = entity.Sex,
                     Fixed = entity.Fixed,
-                    HasShots = entity.HasShots,
+                    Vaccines = entity.Vaccines,
                     Age = entity.Age,
                     Description = entity.Description,
                     AdoptionPrice = entity.AdoptionPrice,
@@ -104,7 +105,7 @@ namespace AnimalShelter.Services
                 entity.Breed = animal.Breed;
                 entity.Sex = animal.Sex;
                 entity.Fixed = animal.Fixed;
-                entity.HasShots = animal.HasShots;
+                entity.Vaccines = animal.Vaccines;
                 entity.Age = animal.Age;
                 entity.Description = animal.Description;
                 entity.AdoptionPrice = animal.AdoptionPrice;
@@ -120,12 +121,14 @@ namespace AnimalShelter.Services
         {
             using (var db = new ApplicationDbContext())
             {
+                int initialCount = db.Animals.Count();
                 var entity = db.Animals
                         .Single(e => e.AnimalId == animalId);
 
                 db.Animals.Remove(entity);
-
-                return db.SaveChanges() == 1;
+                db.SaveChanges();
+                bool wasDeleted = initialCount > db.Animals.Count();
+                return wasDeleted;
             }
         }
     }

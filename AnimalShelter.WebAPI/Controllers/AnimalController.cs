@@ -12,13 +12,15 @@ namespace AnimalShelter.WebAPI.Controllers
 {
     public class AnimalController : ApiController
     {
+        
         private AnimalServices CreateAnimalServices()
         {
-            var user = Guid.Parse(User.Identity.GetUserId());
+            var user = User.Identity.GetUserId();
             var animalService = new AnimalServices(user);
             return animalService;
         }
-        
+        public AnimalController() { }
+
         public IHttpActionResult Post(AnimalCreate animal)
         {
             if (!ModelState.IsValid)
@@ -39,7 +41,7 @@ namespace AnimalShelter.WebAPI.Controllers
             return Ok(animals);
         }
 
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult GetAnimalId(int id)
         {
             AnimalServices animalService = CreateAnimalServices();
             var animal = animalService.GetAnimalById(id);

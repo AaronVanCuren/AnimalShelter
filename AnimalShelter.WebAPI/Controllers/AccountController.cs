@@ -6,7 +6,6 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using System.Web.Http.ModelBinding;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -17,6 +16,7 @@ using AnimalShelter.WebAPI.Models;
 using AnimalShelter.WebAPI.Providers;
 using AnimalShelter.WebAPI.Results;
 using AnimalShelter.Data;
+using AnimalShelter.Models;
 
 namespace AnimalShelter.WebAPI.Controllers
 {
@@ -329,18 +329,51 @@ namespace AnimalShelter.WebAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
-
-            IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-
-            if (!result.Succeeded)
+            if (model.UserType == UserType.customer || model.UserType == UserType.vet)
             {
-                return GetErrorResult(result);
+                var user = new ApplicationUser()
+                {
+                    UserType = model.UserType,
+                    FullName = model.FullName,
+                    UserName = model.UserName,
+                    Email = model.Email,
+                    PhoneNumber = model.PhoneNumber,
+                    Address = model.Address
+                };
+                IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+
+                if (!result.Succeeded)
+                {
+                    return GetErrorResult(result);
+                }
+
+                return Ok();
             }
+            else if (model.UserType == UserType.company)
+            {
+                var user = new ApplicationUser()
+                {
+                    UserType = model.UserType,
+                    CompanyName = model.CompanyName,
+                    UserName = model.UserName,
+                    Email = model.Email,
+                    PhoneNumber = model.PhoneNumber,
+                    Address = model.Address
+                };
+                IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
-            return Ok();
+                if (!result.Succeeded)
+                {
+                    return GetErrorResult(result);
+                }
+
+                return Ok();
+            }
+            else
+            {
+                return InternalServerError();
+            }
         }
-
         // POST api/Account/RegisterExternal
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]

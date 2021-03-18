@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace AnimalShelter.Data
 {
-    public class CompanyRating
+    public class UserRating
     {
         //change
         [Key]
@@ -24,7 +24,7 @@ namespace AnimalShelter.Data
         [Required]
         public double FriendlinessScore { get; set; }
 
-        public double AverageScore
+        public double AverageRating
         {
             get
             {
@@ -33,8 +33,8 @@ namespace AnimalShelter.Data
         }
 
         [Required]
-        public int CompanyId { get; set; }
-        [ForeignKey(nameof(CompanyId))]
-        public virtual Company Company { get; set; }
+        public string Id { get; set; }
+        [ForeignKey(nameof(Id))]
+        public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }

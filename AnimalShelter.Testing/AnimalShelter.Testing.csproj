@@ -78,6 +78,8 @@
     <Compile Include="AnimalUnitTest.cs" />
     <Compile Include="PostUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ApplicationUserTests.cs" />
+    <Compile Include="UserRatingTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -95,6 +97,10 @@
     <ProjectReference Include="..\AnimalShelter.Services\AnimalShelter.Services.csproj">
       <Project>{fa594690-7f7d-4925-b2d3-c7fbb20c2d15}</Project>
       <Name>AnimalShelter.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AnimalShelter.WebAPI\AnimalShelter.WebAPI.csproj">
+      <Project>{c9c7693c-c97b-4327-a7eb-4d0404d0fe35}</Project>
+      <Name>AnimalShelter.WebAPI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

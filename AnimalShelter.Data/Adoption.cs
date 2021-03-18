@@ -10,20 +10,17 @@ namespace AnimalShelter.Data
 {
     public class Adoption
     {
+        [Required]
+        public string UserId { get; set; }
+
         [Key]
         public int AdoptionId { get; set; }
 
-        [Required]
-        public Guid UserId { get; set; }
 
         [Required]
         public int PostId { get; set; }
         [ForeignKey(nameof(PostId))]
         public virtual Post Post { get; set; }
 
-        [Required]
-        public int ProfileId { get; set; }
-        [ForeignKey(nameof(ProfileId))]
-        public virtual Profile Profile { get; set; }
     }
 }

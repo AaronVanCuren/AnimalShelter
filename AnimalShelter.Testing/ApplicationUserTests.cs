@@ -1,16 +1,15 @@
 ﻿/*using AnimalShelter.Data;
 using AnimalShelter.Models;
 using AnimalShelter.Services;
+using AnimalShelter.WebAPI;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
 
 namespace AnimalShelter.Testing
 {
     [TestClass]
-    public class PostUnitTest
+    public class ApplicationUserTests
     {
-
         private static Guid _userId = new Guid("b3dad667-e8f6-4078-8f3f-90168337b01f");
         private readonly ApplicationDbContext _db = new ApplicationDbContext();
         private RegisterBindingModel _customer;
@@ -101,53 +100,29 @@ namespace AnimalShelter.Testing
             _db.Users.Add(customer);
             _db.Users.Add(company);
             _db.Users.Add(vet);
-
-            AnimalServices animalServices = new AnimalServices(_userId);
-
-            List<Vaccine> vaccines = new List<Vaccine>();
-            AnimalCreate animal1 = new AnimalCreate();
-            {
-                animal1.AdoptionPrice = 100m;
-                animal1.Age = "1 year";
-                animal1.Breed = "Golden Retriever";
-                animal1.Description = "Is a test";
-                animal1.Fixed = true;
-                animal1.Vaccines = vaccines;
-                animal1.IsDeclawed = true;
-                animal1.IsEdible = false;
-                animal1.IsHouseTrained = true;
-                animal1.Name = "Buddy";
-                animal1.Sex = true;
-                animal1.Species = SpeciesType.Dog;
-            }
-            
-            animalServices.CreateAnimal(animal1);
         }
 
         [TestMethod]
-        public void CreateUpdateDeletePost()
+        public void AddUserTest()
         {
-            PostServices postServices = new PostServices(_userId, UserType.company);
+            ApplicationUser customer1 = new ApplicationUser()
+            {
+                UserId = _userId,
+                ProfileId = 1,
+                UserType = _customer.UserType,
+                FullName = _customer.FullName,
+                UserName = _customer.UserName,
+                Email = _customer.Email,
+                PhoneNumber = _customer.PhoneNumber,
+                Address = _customer.Address,
+                PasswordHash = _customer.Password
+            };
 
-            PostCreate post = new PostCreate();
-            post.AnimalId = 1;
-
-            bool wasAdded = postServices.CreatePost(post);
+            _db.Users.Add(customer1);
+            bool wasAdded = _db.SaveChanges() == 1;
 
             Assert.IsTrue(wasAdded);
-
         }
-        [TestMethod]
-        public void DeletePost()
-        {
-            PostServices postServices = new PostServices(_userId, UserType.company);
-
-            bool wasDeleted = postServices.DeletePost(8);
-
-            Assert.IsTrue(wasDeleted);
-        }
-        
-
     }
 }
 */
