@@ -11,9 +11,9 @@ namespace AnimalShelter.Services
     public class VaccineServices
     {
 
-        private readonly Guid _userId;
+        private readonly string _userId;
 
-        public VaccineServices(Guid userId)
+        public VaccineServices(string userId)
         {
             _userId = userId;
         }
