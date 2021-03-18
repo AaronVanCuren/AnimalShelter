@@ -10,23 +10,15 @@ namespace AnimalShelter.Services
 {
     public class UserRatingService
     {
-        private readonly string _userId;
-        private readonly UserType _userType;
-
-        public UserRatingService(string userId, UserType userType)
-        {
-            _userId = userId;
-            _userType = userType;
-        }
-
         public bool CreateUserRating(UserRatingCreate model)
         {
 
-            if (_userType == UserType.customer)
+            if (model.UserType == UserType.customer)
             {
 
                 var entity = new UserRating()
                 {
+                    Id = model.UserId,
                     AdoptingProcessScore = model.AdoptingProcessScore,
                     FriendlinessScore = model.FriendlinessScore
                 };
@@ -65,7 +57,7 @@ namespace AnimalShelter.Services
             using (var db = new ApplicationDbContext())
             {
                 var entity = db.Ratings
-                        .Single(e => e.UserId == id);
+                        .Single(e => e.Id == id);
                 return
                     new UserRatingListItem
                     {

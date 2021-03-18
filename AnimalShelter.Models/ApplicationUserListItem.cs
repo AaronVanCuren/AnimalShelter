@@ -28,6 +28,6 @@ namespace AnimalShelter.Models
 
         public virtual List<Post> Posts { get; set; }
 
-        public IQueryable Rating { get; set; }
+        public double Rating { get; set; }
     }
 }

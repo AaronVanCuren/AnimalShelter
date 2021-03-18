@@ -12,5 +12,7 @@ namespace AnimalShelter.Models
     {
         //[Display(Post = "User type")]
         public int PostId { get; set; }
+
+        public UserType UserType { get; set; }
     }
 }

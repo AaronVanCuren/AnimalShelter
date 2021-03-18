@@ -13,5 +13,6 @@ namespace AnimalShelter.Models
 
         public int AnimalId { get; set; }
 
+        public UserType UserType { get; set; }
     }
 }

@@ -8,12 +8,10 @@ namespace AnimalShelter.Services
     public class UserService
     {
         private readonly string _userId;
-        private readonly UserType _userType;
 
-        public UserService(string userId, UserType userType)
+        public UserService(string userId)
         {
             _userId = userId;
-            _userType = userType;
         }
 
         public IEnumerable<ApplicationUserListItem> GetCustomers()
@@ -76,39 +74,16 @@ namespace AnimalShelter.Services
             {
                 var entity = db.Users
                         .Single(e => e.Email == email);
-                if (_userType == UserType.customer)
-                {
                     return new ApplicationUserListItem
                     {
                         Id = entity.Id,
                         UserName = entity.UserName,
-                        FullName = entity.FullName,
-                        PhoneNumber = entity.PhoneNumber,
-                        Address = entity.Address,
-                    };
-                }
-                else if (_userType == UserType.company)
-                {
-                    return new ApplicationUserListItem
-                    {
-                        UserName = entity.UserName,
                         CompanyName = entity.CompanyName,
-                        PhoneNumber = entity.PhoneNumber,
-                        Address = entity.Address,
-                    };
-                }
-                else if (_userType == UserType.vet)
-                {
-                    return new ApplicationUserListItem
-                    {
-                        UserName = entity.UserName,
                         FullName = entity.FullName,
                         PhoneNumber = entity.PhoneNumber,
                         Address = entity.Address,
                         Vaccines = entity.Vaccines
                     };
-                }
-                return null;
             }
         }
 
@@ -131,7 +106,7 @@ namespace AnimalShelter.Services
             {
                 var entity = db.Users
                         .Single(e => e.Id == model.Id);
-                if (_userType == UserType.customer)
+                if (model.UserType == UserType.customer)
                 {
                     {
                         entity.UserName = model.UserName;
@@ -141,7 +116,7 @@ namespace AnimalShelter.Services
                         entity.Address = model.Address;
                     };
                 }
-                else if (_userType == UserType.company)
+                else if (model.UserType == UserType.company)
                 {
                     {
                         entity.UserName = model.UserName;
@@ -151,7 +126,7 @@ namespace AnimalShelter.Services
                         entity.Address = model.Address;
                     };
                 }
-                else if (_userType == UserType.vet)
+                else if (model.UserType == UserType.vet)
                 {
                     {
                         entity.UserName = model.UserName;

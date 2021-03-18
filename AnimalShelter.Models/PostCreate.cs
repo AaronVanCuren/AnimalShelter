@@ -13,5 +13,7 @@ namespace AnimalShelter.Models
     public class PostCreate
     {
         public int AnimalId { get; set; }
+
+        public UserType UserType { get; set; }
     }
 }
