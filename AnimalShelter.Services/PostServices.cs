@@ -9,16 +9,14 @@ namespace AnimalShelter.Services
     public class PostServices
     {
         private readonly string _userId;
-        private readonly UserType _userType;
 
-        public PostServices(string userId, UserType userType)
+        public PostServices(string userId)
         {
             _userId = userId;
-            _userType = userType;
         }
         public bool CreatePost(PostCreate model)
         {
-            if (_userType == UserType.company)
+            if (model.UserType == UserType.company)
             {
                 var entity = new Post()
                 {
@@ -110,7 +108,7 @@ namespace AnimalShelter.Services
 
         public bool UpdatePost(PostRUD model)
         {
-            if (_userType == UserType.company)
+            if (model.UserType == UserType.company)
             {
                 using (var db = new ApplicationDbContext())
                 {
@@ -131,23 +129,15 @@ namespace AnimalShelter.Services
 
         public bool DeletePost(int postId)
         {
-            if (_userType == UserType.company)
+            using (var db = new ApplicationDbContext())
             {
-                using (var db = new ApplicationDbContext())
-                {
-                    var entity = db.Posts
-                            .Single(e => e.PostId == postId && e.UserId == _userId);
+                var entity = db.Posts
+                        .Single(e => e.PostId == postId && e.UserId == _userId);
 
-                    db.Posts.Remove(entity);
+                db.Posts.Remove(entity);
 
-                    return db.SaveChanges() == 1;
-                }
+                return db.SaveChanges() == 1;
             }
-            else
-            {
-                Console.WriteLine("Would you like to make a company account?");
-            }
-            return false;
         }
     }
 }

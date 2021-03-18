@@ -10,10 +10,7 @@ namespace AnimalShelter.WebAPI.Controllers
     {
         private UserRatingService CreateUserRatingService()
         {
-            var userId = User.Identity.GetUserId();
-            ApplicationUser user = new ApplicationUser();
-            ApplicationUserListItem userType = new UserService(userId, user.UserType).GetUserByType();
-            var userRatingService = new UserRatingService(userId, userType.UserType);
+            var userRatingService = new UserRatingService();
             return userRatingService;
         }
 

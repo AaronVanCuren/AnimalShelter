@@ -11,8 +11,7 @@ namespace AnimalShelter.WebAPI.Controllers
         private UserService CreateUserService()
         {
             var userId = User.Identity.GetUserId();
-            ApplicationUser user = new ApplicationUser();
-            var userService = new UserService(userId, user.UserType);
+            var userService = new UserService(userId);
             return userService;
         }
 

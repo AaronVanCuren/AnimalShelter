@@ -11,17 +11,15 @@ namespace AnimalShelter.Services
     public class AdoptService
     {
         private readonly string _userId;
-        private readonly UserType _userType;
 
-        public AdoptService(string userId, UserType userType)
+        public AdoptService(string userId)
         {
             _userId = userId;
-            _userType = userType;
         }
 
         public bool CreateAdoption(AdoptCreate model)
         {
-            if (_userType == UserType.customer)
+            if (model.UserType == UserType.customer)
             {
                 var entity = new Adoption()
                 {
@@ -102,7 +100,7 @@ namespace AnimalShelter.Services
 
         public bool UpdateAdoption(AdoptionRUD model)
         {
-            if (_userType == UserType.customer)
+            if (model.UserType == UserType.customer)
                 using (var db = new ApplicationDbContext())
                 {
                     var entity = db.Adoptions
@@ -121,21 +119,15 @@ namespace AnimalShelter.Services
 
         public bool DeleteAdoption(int id)
         {
-            if (_userType == UserType.customer)
-                using (var db = new ApplicationDbContext())
-                {
-                    var entity = db.Adoptions
-                            .Single(e => e.AdoptionId == id && e.UserId == _userId);
-
-                    db.Adoptions.Remove(entity);
-
-                    return db.SaveChanges() == 1;
-                }
-            else
+            using (var db = new ApplicationDbContext())
             {
-                Console.WriteLine("Would you like to make a customer account?");
+                var entity = db.Adoptions
+                        .Single(e => e.AdoptionId == id && e.UserId == _userId);
+
+                db.Adoptions.Remove(entity);
+
+                return db.SaveChanges() == 1;
             }
-            return false;
         }
     }
 }

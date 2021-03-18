@@ -11,5 +11,7 @@ namespace AnimalShelter.Models
     public class AdoptCreate
     {
         public int PostId { get; set; }
+
+        public UserType UserType { get; set; }
     }
 }
