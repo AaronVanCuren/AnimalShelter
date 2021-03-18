@@ -15,6 +15,9 @@ We are creating an API for an animal adoption website hub.
 We would like various shelters to post available animals that are ready to be adopted and give potential animal owners an easy way to access this information.
 
 # Testing Directions
+**NOTE**
+This is scaffolding for utilizing the Web Api. You might still need to change certain values based on your own databases made from this program
+
 1. Clone Solution
 2. Upon opening solution find the **Solution Items** folder near the top of the Solution
 3. Included is the AnimalShelter.postman_collection.json file
