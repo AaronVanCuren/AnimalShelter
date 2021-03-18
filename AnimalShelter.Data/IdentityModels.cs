@@ -34,14 +34,14 @@ namespace AnimalShelter.Data
 
         public virtual List<UserRating> Ratings { get; set; } = new List<UserRating>();
 
-        public double Rating
+        public double AverageRating
         {
             get
             {
                 double TotalAverageRating = 0;
                 foreach (var rating in Ratings)
                 {
-                    TotalAverageRating += rating.AverageScore;
+                    TotalAverageRating += rating.AverageRating;
                 }
                 return (Ratings.Count > 0) ? TotalAverageRating / Ratings.Count : 0;
             }

@@ -43,7 +43,10 @@ namespace AnimalShelter.Services
                         Email = e.Email,
                         PhoneNumber = e.PhoneNumber,
                         Address = e.Address,
-                        Posts = e.Posts,                        
+                        Posts = e.Posts,
+
+                        //Check with Andrew
+                        //AverageRating = e.AverageRating
                     });
 
                 return query.ToArray();
@@ -82,6 +85,7 @@ namespace AnimalShelter.Services
                         FullName = entity.FullName,
                         PhoneNumber = entity.PhoneNumber,
                         Address = entity.Address,
+                        AverageRating = entity.AverageRating,
                         Vaccines = entity.Vaccines
                     };
             }

@@ -24,7 +24,7 @@ namespace AnimalShelter.Data
         [Required]
         public double FriendlinessScore { get; set; }
 
-        public double AverageScore
+        public double AverageRating
         {
             get
             {

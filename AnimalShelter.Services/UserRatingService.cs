@@ -15,7 +15,6 @@ namespace AnimalShelter.Services
 
             if (model.UserType == UserType.customer)
             {
-
                 var entity = new UserRating()
                 {
                     Id = model.UserId,
@@ -45,7 +44,7 @@ namespace AnimalShelter.Services
                             {
                                 RatingId = e.RatingId,
                                 CompanyName = e.ApplicationUser.CompanyName,
-                                AverageScore = e.AverageScore
+                                AverageRating = e.AverageRating
                             });
 
                 return query.ToArray();
@@ -63,7 +62,7 @@ namespace AnimalShelter.Services
                     {
                         RatingId = entity.RatingId,
                         CompanyName = entity.ApplicationUser.CompanyName,
-                        AverageScore = entity.AverageScore
+                        AverageRating = entity.AverageRating
                     };
             }
         }

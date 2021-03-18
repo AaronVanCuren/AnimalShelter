@@ -13,6 +13,6 @@ namespace AnimalShelter.Models
 
         public string CompanyName { get; set; }
 
-        public double AverageScore { get; set; }
+        public double AverageRating { get; set; }
     }
 }
