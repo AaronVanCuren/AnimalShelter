@@ -15,6 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalShelter.Testing", "An
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E63B6A52-4447-41B8-B6B0-78B0C2F3BDD3}"
 	ProjectSection(SolutionItems) = preProject
+		C:\Users\aaron\AppData\Local\Postman\app-8.0.7\AnimalShelter.postman_collection.json = C:\Users\aaron\AppData\Local\Postman\app-8.0.7\AnimalShelter.postman_collection.json
 		README - Animal Shelter.docx = README - Animal Shelter.docx
 		README.md = README.md
 	EndProjectSection
