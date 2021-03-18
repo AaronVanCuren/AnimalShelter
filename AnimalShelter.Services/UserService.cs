@@ -44,12 +44,9 @@ namespace AnimalShelter.Services
                         PhoneNumber = e.PhoneNumber,
                         Address = e.Address,
                         Posts = e.Posts,
-
-                        //Check with Andrew
-                        //AverageRating = e.AverageRating
                     });
 
-                return query.ToArray();
+            return query.ToArray();
             }
         }
 
@@ -77,17 +74,17 @@ namespace AnimalShelter.Services
             {
                 var entity = db.Users
                         .Single(e => e.Email == email);
-                    return new ApplicationUserListItem
-                    {
-                        Id = entity.Id,
-                        UserName = entity.UserName,
-                        CompanyName = entity.CompanyName,
-                        FullName = entity.FullName,
-                        PhoneNumber = entity.PhoneNumber,
-                        Address = entity.Address,
-                        AverageRating = entity.AverageRating,
-                        Vaccines = entity.Vaccines
-                    };
+                return new ApplicationUserListItem
+                {
+                    Id = entity.Id,
+                    UserName = entity.UserName,
+                    CompanyName = entity.CompanyName,
+                    FullName = entity.FullName,
+                    PhoneNumber = entity.PhoneNumber,
+                    Address = entity.Address,
+                    TotalAverageRating = entity.TotalAverageRating,
+                    Vaccines = entity.Vaccines
+                };
             }
         }
 
