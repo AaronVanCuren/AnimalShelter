@@ -163,6 +163,8 @@ We would like various shelters to post available animals that are ready to be ad
 -	Adopt an Animal	
 -	Provide Vaccine Info
 
+# Links
+
 [Trello](https://trello.com/b/lJKVo70w/animal-shelter)
 
 [DB Diagram](https://dbdiagram.io/d/60536101ecb54e10c33c1866)
