@@ -1,0 +1,2326 @@
+{
+	"info": {
+		"_postman_id": "d749b02b-3d10-4652-a397-8d3565ddd89b",
+		"name": "AnimalShelter",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register Account",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "UserType",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "FullName",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "CompanyName",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "UserName",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "Email",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "PhoneNumber",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "Address",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "Password",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "ConfirmPassword",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44388/api/Account/Register",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"Account",
+						"Register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseJson = pm.response.json();\r",
+							"pm.environment.set(\"Token\", responseJson.access_token)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44388/Token",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"Token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Customer Account",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "UserType",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "FullName",
+							"value": "David",
+							"type": "text"
+						},
+						{
+							"key": "UserName",
+							"value": "dbenge",
+							"type": "text"
+						},
+						{
+							"key": "Email",
+							"value": "dbenge@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "PhoneNumber",
+							"value": "260-123-4567",
+							"type": "text"
+						},
+						{
+							"key": "Address",
+							"value": "123 Main St",
+							"type": "text"
+						},
+						{
+							"key": "Password",
+							"value": "Test1!",
+							"type": "text"
+						},
+						{
+							"key": "ConfirmPassword",
+							"value": "Test1!",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44388/api/Account/Register",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"Account",
+						"Register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Customer Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseJson = pm.response.json();\r",
+							"pm.environment.set(\"Token\", responseJson.access_token)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "dbenge",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Test1!",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44388/Token",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"Token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Company Account",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "UserType",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "CompanyName",
+							"value": "dbcompany",
+							"type": "text"
+						},
+						{
+							"key": "UserName",
+							"value": "dbcompany",
+							"type": "text"
+						},
+						{
+							"key": "Email",
+							"value": "dbcompany@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "PhoneNumber",
+							"value": "260-123-4567",
+							"type": "text"
+						},
+						{
+							"key": "Address",
+							"value": "123 Main St",
+							"type": "text"
+						},
+						{
+							"key": "Password",
+							"value": "Test1!",
+							"type": "text"
+						},
+						{
+							"key": "ConfirmPassword",
+							"value": "Test1!",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44388/api/Account/Register",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"Account",
+						"Register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Company Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseJson = pm.response.json();\r",
+							"pm.environment.set(\"Token\", responseJson.access_token)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "dbcompany",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Test1!",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44388/Token",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"Token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Vet Account",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "UserType",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "FullName",
+							"value": "DrVet",
+							"type": "text"
+						},
+						{
+							"key": "UserName",
+							"value": "drvet",
+							"type": "text"
+						},
+						{
+							"key": "Email",
+							"value": "drvet@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "PhoneNumber",
+							"value": "260-123-4567",
+							"type": "text"
+						},
+						{
+							"key": "Address",
+							"value": "123 Main St",
+							"type": "text"
+						},
+						{
+							"key": "Password",
+							"value": "Test1!",
+							"type": "text"
+						},
+						{
+							"key": "ConfirmPassword",
+							"value": "Test1!",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44388/api/Account/Register",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"Account",
+						"Register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Vet Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseJson = pm.response.json();\r",
+							"pm.environment.set(\"Token\", responseJson.access_token)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "drvet",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Test1!",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44388/Token",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"Token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:44388/api/Account/Logout",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"Account",
+						"Logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Customers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseJson = pm.response.json();\r",
+							"pm.environment.set(\"Token\", responseJson.access_token)\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:44388/api/User/Customers",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"User",
+						"Customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Companies",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseJson = pm.response.json();\r",
+							"pm.environment.set(\"Token\", responseJson.access_token)\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:44388/api/User/Companies",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"User",
+						"Companies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vets",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseJson = pm.response.json();\r",
+							"pm.environment.set(\"Token\", responseJson.access_token)\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:44388/api/User/Vets",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"User",
+						"Vets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User by Email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseJson = pm.response.json();\r",
+							"pm.environment.set(\"Token\", responseJson.access_token)\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "https://localhost:44388/api/UserByEmail?email=dbenge@gmail.com",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"UserByEmail"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "dbenge@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Rating",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "CompanyName",
+							"value": "ABC Company",
+							"type": "text"
+						},
+						{
+							"key": "UserId",
+							"value": "1143556e-92c3-42bf-bc74-d585d4b6e42a",
+							"type": "text"
+						},
+						{
+							"key": "AdoptingProcessScore",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "FriendlinessScore",
+							"value": "5",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44388/api/UserRating",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"UserRating"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Rating",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "CompanyName",
+							"value": "ABC Company",
+							"type": "text"
+						},
+						{
+							"key": "UserId",
+							"value": "1143556e-92c3-42bf-bc74-d585d4b6e42a",
+							"type": "text"
+						},
+						{
+							"key": "AdoptingProcessScore",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "FriendlinessScore",
+							"value": "5",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44388/api/UserRating",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"UserRating"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Rating by Rating Id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "CompanyName",
+							"value": "dbcompany",
+							"type": "text"
+						},
+						{
+							"key": "UserId",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "AdoptingProcessScore",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "FriendlinessScore",
+							"value": "5",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44388/api/UserRating",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"UserRating"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User by Id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "Id",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "UserName",
+							"value": "Update Username",
+							"type": "text"
+						},
+						{
+							"key": "FullName",
+							"value": "Updated name",
+							"type": "text"
+						},
+						{
+							"key": "CompanyName",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "Email",
+							"value": "updatedemail@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "PhoneNumber",
+							"value": "260-123-4567",
+							"type": "text"
+						},
+						{
+							"key": "Address",
+							"value": "123 Main St",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44388/api/User",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"User"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User by Email",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "https://localhost:44388/api/User?email=drvet@gmail.com",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"User"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "drvet@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dog",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "Name",
+							"value": "test",
+							"type": "text"
+						},
+						{
+							"key": "Species",
+							"value": "dog",
+							"type": "text"
+						},
+						{
+							"key": "Breed",
+							"value": "GermanShepherd",
+							"type": "text"
+						},
+						{
+							"key": "Sex",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "Fixed",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "HasShots",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "Age",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "Description",
+							"value": "DogStuff",
+							"type": "text"
+						},
+						{
+							"key": "AdoptionPrice",
+							"value": "150.00",
+							"type": "text"
+						},
+						{
+							"key": "IsHouseTrained",
+							"value": "true",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44388/api/Animal",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"Animal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cat",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "Name",
+							"value": "test",
+							"type": "text"
+						},
+						{
+							"key": "Species",
+							"value": "Cat",
+							"type": "text"
+						},
+						{
+							"key": "Breed",
+							"value": "Mainx",
+							"type": "text"
+						},
+						{
+							"key": "Sex",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "Fixed",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "HasShots",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "Age",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "Description",
+							"value": "Cat Stuff",
+							"type": "text"
+						},
+						{
+							"key": "AdoptionPrice",
+							"value": "50.00",
+							"type": "text"
+						},
+						{
+							"key": "IsDeclawed",
+							"value": "false",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44388/api/Animal",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"Animal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bunny",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "Name",
+							"value": "test",
+							"type": "text"
+						},
+						{
+							"key": "Species",
+							"value": "bunny",
+							"type": "text"
+						},
+						{
+							"key": "Breed",
+							"value": "Hare",
+							"type": "text"
+						},
+						{
+							"key": "Sex",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "Fixed",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "HasShots",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "Age",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "Description",
+							"value": "Bunny Stuff",
+							"type": "text"
+						},
+						{
+							"key": "AdoptionPrice",
+							"value": "25.00",
+							"type": "text"
+						},
+						{
+							"key": "IsEdible",
+							"value": "false",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44388/api/Animal",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"Animal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Animals",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:44388/api/Animal",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"Animal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Animal",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "AnimalId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "Name",
+							"value": "Test",
+							"type": "text"
+						},
+						{
+							"key": "Species",
+							"value": "dog",
+							"type": "text"
+						},
+						{
+							"key": "Breed",
+							"value": "WTF",
+							"type": "text"
+						},
+						{
+							"key": "Sex",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "Fixed",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "Vaccines",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "Age",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "Description",
+							"value": "doggy",
+							"type": "text"
+						},
+						{
+							"key": "AdoptionPrice",
+							"value": "110",
+							"type": "text"
+						},
+						{
+							"key": "IsHouseTrained",
+							"value": "true",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "IsDeclawed",
+							"value": "false",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "IsEdible",
+							"value": "false",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44388/api/Animal/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"Animal",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Animal",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:44388/api/Animal/2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"Animal",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Animal Post",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "AnimalId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "UserType",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44388/api/Post",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"Post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Animal Posts",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "AnimalId",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "CompanyId",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44388/api/Post",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"Post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Animal Posts",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "PostId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "AnimalId",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44388/api/Post",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"Post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Animal Posts",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "https://localhost:44388/api/Post/3",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"Post",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Adoption",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "PostId",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44388/api/Adopt",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"Adopt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Adoption",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "https://localhost:44388/api/Adopt",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"Adopt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Adoption By Id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Adoption",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "AdoptionId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "PostId",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44388/api/Adopt",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"Adopt"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Adoption",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44388/api/Adopt/6",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"Adopt",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Comment on Post",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "Content",
+							"value": "Comment on posts and stuff",
+							"type": "text"
+						},
+						{
+							"key": "PostId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "Author",
+							"value": "Bearer {{Token}}",
+							"type": "text"
+						},
+						{
+							"key": "Posts",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44388/api/Comment",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"Comment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Comment on Post",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "Content",
+							"value": "Comment on posts and stuff",
+							"type": "text"
+						},
+						{
+							"key": "PostId",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "Author",
+							"value": "Bearer {{Token}}",
+							"type": "text"
+						},
+						{
+							"key": "Posts",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44388/api/Comment",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"Comment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Comment on Post",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "PostId",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "CommentId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "Content",
+							"value": "OMFG I'M KILLIN IT",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44388/api/Comment",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"Comment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Comment on Post",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "PostId",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44388/api/Comment/2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"Comment",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reply on Comment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "Content",
+							"value": "Reply on Comment and stuff",
+							"type": "text"
+						},
+						{
+							"key": "CommentId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "Author",
+							"value": "Bearer {{Token}}",
+							"type": "text"
+						},
+						{
+							"key": "Comments",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44388/api/Reply",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"Reply"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reply on Comment",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "Content",
+							"value": "Comment on posts and stuff",
+							"type": "text"
+						},
+						{
+							"key": "CommentId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "Author",
+							"value": "Bearer {{Token}}",
+							"type": "text"
+						},
+						{
+							"key": "Comments",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44388/api/Reply",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"Reply"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Reply on Comment",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "CommentId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "ReplyId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "Content",
+							"value": "Give us an A+++++ :)",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44388/api/Comment",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"Comment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reply on Comment",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44388/api/Reply/2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"Reply",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vaccine",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "Name",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "CommonName",
+							"value": "Rabbies Vaccination",
+							"type": "text"
+						},
+						{
+							"key": "VaccinationSchedule",
+							"value": "https://www.carecredit.com/vetmed/article/vaccination-timeline-for-dogs-and-puppies/#:~:text=Considered%20a%20core%20vaccine%2C%20rabies,every%20one%20to%20three%20years.",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44388/api/Vaccine",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"Vaccine"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vaccines",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:44388/api/Vaccine",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"Vaccine"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Vaccine",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "VaccineId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "Name",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "CommonName",
+							"value": "UpdateName",
+							"type": "text"
+						},
+						{
+							"key": "VaccinationSchedule",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44388/api/Vaccine",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"Vaccine"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vaccine",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:44388/api/Vaccine/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44388",
+					"path": [
+						"api",
+						"Vaccine",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
