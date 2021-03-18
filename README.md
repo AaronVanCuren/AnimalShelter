@@ -4,6 +4,7 @@ Developers: Aaron Van Curen, David Benge, Jacob Hash
 
 ## Table of Contents
 - Mission Statement
+- Testing Directions
 - Database
 - Features
 - Links
@@ -12,6 +13,29 @@ Developers: Aaron Van Curen, David Benge, Jacob Hash
 ---
 We are creating an API for an animal adoption website hub.
 We would like various shelters to post available animals that are ready to be adopted and give potential animal owners an easy way to access this information.
+
+# Testing Directions
+1. Clone Solution
+2. Upon opening solution find the **Solution Items** folder near the top of the Solution
+3. Included is the AnimalShelter.postman_collection.json file
+4. In Postman import a new Workspace
+5. Drag and drop AnimalShelter.postman_collection.json
+6. In the workspace you will notice a plethora of endpoints
+7. Use *Post* Register Vet Account - This will create your account as a Vet
+8. Use *Get* Vet Token - This will automatically pull in your Bearer Token into the other tests 
+9. The Vet Account was made for the Vaccine Tests. Initial testing of Vaccine will not enable any other tests
+10. Use *Post* Logout - This will enable you to create a new user
+11. Use *Post* Register Company Account - This will create your account as a Company
+12. Use *Get* Company Token - This will automatically pull in your Bearer Token into the other tests 
+13. The Company Account was specifically made for the Post class and it's controllers
+14. Use *Post* Dog, Cat, and Bunny to allow you to test the Animals class. The Animals class will enable the Post class Tests
+15. Test the Post Class *Post*, *Get*, *Put*, and *Delete* Animal Posts endpoints
+16. Use *Post* Logout
+17. Use *Post* Register Customer Account - This will create your account as a Customer
+18. Use *Get* Customer Token - This will automatically pull in your Bearer Token into the other tests 
+19. The Customer Account was made for the Adopt Tests. Previous testing of the Company process will enable the Adoption Tests
+20. This is the time to Test Comments and Replies. Comments on Posts will enable the Replies Tests.
+21. Adoptions can now be successfully tests
 
 # Database
 ---
