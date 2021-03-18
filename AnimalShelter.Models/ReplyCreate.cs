@@ -18,7 +18,7 @@ namespace AnimalShelter.Services
         public string CommentId { get; set; }
 
         [Required]
-        public Guid Author { get; set; }
+        public string Author { get; set; }
 
         public List<SelectListItem> Comments { get; set; }
     }

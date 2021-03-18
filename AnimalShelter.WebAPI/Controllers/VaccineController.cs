@@ -14,7 +14,7 @@ namespace AnimalShelter.WebAPI.Controllers
     {
         private VaccineServices CreateVaccineServices()
         {
-            var user = Guid.Parse(User.Identity.GetUserId());
+            var user = User.Identity.GetUserId();
             var vaccineService = new VaccineServices(user);
             return vaccineService;
         }
